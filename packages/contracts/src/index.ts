@@ -118,3 +118,87 @@ export const MemberDtoSchema = z.object({
   joinedAt: z.string().datetime()
 });
 export type MemberDto = z.infer<typeof MemberDtoSchema>;
+
+// Nutrition DTOs
+export const ProtocolMealDtoSchema = z.object({
+  id: z.string().uuid().optional(),
+  name: z.string(),
+  timeOffsetMinutes: z.number().int(),
+  macrosJson: z.object({
+    protein: z.number().nonnegative(),
+    carbs: z.number().nonnegative(),
+    fat: z.number().nonnegative(),
+    calories: z.number().nonnegative()
+  }),
+  prepNotes: z.string().optional()
+});
+export type ProtocolMealDto = z.infer<typeof ProtocolMealDtoSchema>;
+
+export const DietProtocolDtoSchema = z.object({
+  id: z.string().uuid(),
+  orgId: z.string().uuid(),
+  hubId: z.string().uuid(),
+  title: z.string(),
+  category: z.string(),
+  kcalTarget: z.number().int().positive(),
+  proteinGrams: z.number().int().positive(),
+  carbGrams: z.number().int().positive(),
+  fatGrams: z.number().int().positive(),
+  tier: MembershipTierSchema,
+  version: z.number().int().positive().default(1),
+  status: z.enum(['DRAFT', 'PUBLISHED', 'ARCHIVED']),
+  meals: z.array(ProtocolMealDtoSchema).optional(),
+  createdAt: z.string().datetime()
+});
+export type DietProtocolDto = z.infer<typeof DietProtocolDtoSchema>;
+
+export const BodyAssessmentDtoSchema = z.object({
+  id: z.string().uuid(),
+  memberId: z.string().uuid(),
+  bodyFatPercentage: z.number(),
+  muscleMassKg: z.number(),
+  bmi: z.number(),
+  source: z.string().default('INBODY_770'),
+  scannedAt: z.string().datetime()
+});
+export type BodyAssessmentDto = z.infer<typeof BodyAssessmentDtoSchema>;
+
+// Billing DTOs
+export const SubscriptionDtoSchema = z.object({
+  id: z.string().uuid(),
+  memberId: z.string().uuid(),
+  planId: z.string().uuid(),
+  planName: z.string().optional(),
+  planPriceCents: z.number().int().optional(),
+  status: z.enum(['ACTIVE', 'PAST_DUE', 'CANCELED', 'TRIAL']),
+  renewsAt: z.string().datetime()
+});
+export type SubscriptionDto = z.infer<typeof SubscriptionDtoSchema>;
+
+export const InvoiceDtoSchema = z.object({
+  id: z.string().uuid(),
+  orgId: z.string().uuid(),
+  hubId: z.string().uuid(),
+  memberId: z.string().uuid(),
+  memberName: z.string().optional(),
+  invoiceNo: z.string(),
+  amountCents: z.number().int(),
+  currency: z.string().default('USD'),
+  status: z.enum(['OPEN', 'PAID', 'PAST_DUE', 'VOID']),
+  dueAt: z.string().datetime(),
+  paidAt: z.string().datetime().nullable().optional(),
+  createdAt: z.string().datetime()
+});
+export type InvoiceDto = z.infer<typeof InvoiceDtoSchema>;
+
+// Webhook Envelope
+export const PaymentWebhookEventSchema = z.object({
+  id: z.string(),
+  provider: z.enum(['MOCK', 'STRIPE', 'RAZORPAY']),
+  type: z.enum(['payment.succeeded', 'payment.failed', 'subscription.renewed', 'subscription.canceled']),
+  timestamp: z.number(),
+  signature: z.string(),
+  payload: z.record(z.string(), z.any())
+});
+export type PaymentWebhookEvent = z.infer<typeof PaymentWebhookEventSchema>;
+
