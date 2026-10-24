@@ -1,0 +1,104 @@
+_format_version: '3.0'
+
+services:
+  - name: auth-service
+    url: http://auth-service:3001
+    routes:
+      - name: auth-routes
+        paths:
+          - /v1/auth
+        strip_path: true
+
+  - name: member-service
+    url: http://member-service:3002
+    routes:
+      - name: member-routes
+        paths:
+          - /v1/members
+        strip_path: true
+
+  - name: scheduling-service
+    url: http://scheduling-service:3003
+    routes:
+      - name: scheduling-routes
+        paths:
+          - /v1/schedule
+          - /v1/sessions
+          - /v1/bookings
+        strip_path: true
+
+  - name: nutrition-service
+    url: http://nutrition-service:3004
+    routes:
+      - name: nutrition-routes
+        paths:
+          - /v1/nutrition
+          - /v1/protocols
+          - /v1/assessments
+        strip_path: true
+
+  - name: billing-service
+    url: http://billing-service:3005
+    routes:
+      - name: billing-routes
+        paths:
+          - /v1/billing
+          - /v1/invoices
+          - /v1/subscriptions
+        strip_path: true
+
+  - name: access-service
+    url: http://access-service:3006
+    routes:
+      - name: access-routes
+        paths:
+          - /v1/access
+        strip_path: true
+
+  - name: notification-service
+    url: http://notification-service:3007
+    routes:
+      - name: notification-routes
+        paths:
+          - /v1/notifications
+        strip_path: true
+
+plugins:
+  - name: correlation-id
+    config:
+      header_name: X-Request-ID
+      generator: uuid
+      echo_downstream: true
+
+  - name: cors
+    config:
+      origins:
+        - http://localhost:5173
+        - http://localhost:80
+        - http://localhost:3000
+      methods:
+        - GET
+        - POST
+        - PUT
+        - PATCH
+        - DELETE
+        - OPTIONS
+      headers:
+        - Accept
+        - Accept-Version
+        - Content-Length
+        - Content-MD5
+        - Content-Type
+        - Date
+        - Authorization
+        - X-Request-ID
+        - Idempotency-Key
+        - If-Match
+      exposed_headers:
+        - X-Request-ID
+        - ETag
+        - RateLimit-Limit
+        - RateLimit-Remaining
+        - RateLimit-Reset
+      credentials: true
+      max_age: 3600

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#2b313c", "inverse-on-surface": "#2e3036", "outline": "#8e9379", "background": "#111319", "surface-container-lowest": "#0b0e13", "secondary-fixed-dim": "#00dbe9", "primary": "#ffffff", "secondary-fixed": "#7df4ff", "on-secondary": "#00363a", "surface-tint": "#abd600", "on-error": "#690005", "inverse-surface": "#e1e2ea", "surface-container-high": "#272a30", "tertiary-fixed-dim": "#c1c6d5", "primary-container": "#c3f400", "on-surface": "#e1e2ea", "tertiary": "#ffffff", "on-secondary-container": "#00686f", "surface-variant": "#32353b", "on-surface-variant": "#c4c9ac", "surface-container-low": "#191c21", "inverse-primary": "#506600", "secondary-container": "#00eefc", "surface-container-highest": "#32353b", "primary-fixed": "#c3f400", "error": "#ffb4ab", "surface-bright": "#36393f", "surface-dim": "#111319", "on-primary-fixed-variant": "#3c4d00", "outline-variant": "#444933", "tertiary-container": "#dde2f2", "surface-container": "#1d2025", "surface": "#111319", "on-tertiary-container": "#5e6471", "on-primary-fixed": "#161e00", "primary-fixed-dim": "#abd600", "on-tertiary-fixed": "#161c26", "on-background": "#e1e2ea", "error-container": "#93000a", "on-secondary-fixed-variant": "#004f54", "on-secondary-fixed": "#002022", "secondary": "#d3fbff", "on-primary-container": "#556d00", "on-error-container": "#ffdad6", "tertiary-fixed": "#dde2f2", "on-primary": "#283500", "on-tertiary-fixed-variant": "#414753" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter": "1rem", "gutter-desktop": "1.5rem", "margin": "1rem", "space-sm": "0.5rem", "margin-desktop": "2rem", "space-md": "1rem", "space-xl": "2rem", "space-xxs": "0.125rem", "space-2xl": "3rem", "space-xs": "0.25rem", "space-lg": "1.5rem" }, "fontFamily": { "headline-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "display-hero-mobile": ["Plus Jakarta Sans"], "metric-md": ["Plus Jakarta Sans"], "body-md": ["Inter"], "metric-xl": ["Plus Jakarta Sans"], "label-caps": ["JetBrains Mono"], "display-hero": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "data-mono": ["JetBrains Mono"], "body-lg": ["Inter"], "headline-sm": ["Plus Jakarta Sans"] }, "fontSize": { "headline-lg": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg-mobile": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-hero-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "metric-md": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }], "metric-xl": ["36px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }], "display-hero": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400" }], "data-mono": ["13px", { "lineHeight": "16px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.3)]"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center justify-between bg-surface-container-lowest"><div class="flex items-center gap-space-sm"><img alt="KineticFit Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WN3thGy23HWNYfH0iDPeW94zA94uq1Ic8i-kgYwS9SRtsI19jlA2wbHrgQLb8dbAdNVC03Fh55FE2eAsl4i-XNnCbhcXnlelO3dcpJSrm2yeCUS4fRha8fpGWv77Dhwa9G71fr4qWGUYKIh2JjZaI73CigoWmAYFdcW_V1fgD7WsHs5lqT6KulAdpzRCo26sSUCDwkNuFS7IiA_tyseyO0xPHu-vqMOC3Nv1tAz5cS"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">KineticFit</span><span class="font-label-caps text-label-caps text-primary-fixed uppercase tracking-wider">OS Engine</span></div></div><span class="h-2 w-2 rounded-full bg-primary-fixed animate-pulse"></span></div><div class="p-space-md"><div class="bg-surface-container px-space-md py-space-sm rounded-lg flex items-center justify-between"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-secondary text-base">location_on</span><div class="flex flex-col"><span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Active Hub</span><span class="font-body-sm text-body-sm text-on-surface font-semibold truncate max-w-[120px]">Downtown Flagship</span></div></div><span class="material-symbols-outlined text-on-surface-variant text-sm">unfold_more</span></div></div><nav class="flex flex-col gap-space-xxs px-space-md" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_0_12px_rgba(195,244,0,0.2)]"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-lg">grid_view</span><span class="font-body-md text-body-md">Dashboard</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-all bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_0_12px_rgba(195,244,0,0.2)]" data-path="members-directory" href="#"><span class="material-symbols-outlined text-lg">group</span><span class="font-body-md text-body-md">Members Directory</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="class-schedule" href="#"><span class="material-symbols-outlined text-lg">calendar_month</span><span class="font-body-md text-body-md">Class Schedule</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="diet-and-nutrition-plans" href="#"><span class="material-symbols-outlined text-lg">nutrition</span><span class="font-body-md text-body-md">Diet & Nutrition</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="trainers-and-staff" href="#"><span class="material-symbols-outlined text-lg">sports</span><span class="font-body-md text-body-md">Trainers & Staff</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="financials-and-billing" href="#"><span class="material-symbols-outlined text-lg">payments</span><span class="font-body-md text-body-md">Financials & Billing</span></a></nav></div><div class="p-space-md flex flex-col gap-space-sm"><div class="bg-surface-container-high p-space-md rounded-lg flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Floor Live Saturation</span><span class="font-data-mono text-data-mono text-secondary font-semibold">74%</span></div><div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden"><div class="bg-secondary-container h-full rounded-full" style="width: 74%"></div></div><span class="font-label-caps text-label-caps text-outline text-[10px]">Capacity: 222/300 Athletes</span></div><div class="text-center"><span class="font-label-caps text-label-caps text-outline uppercase tracking-widest text-[9px]">KineticFit v4.2 Enterprise</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/80 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.1)]"><div class="w-full h-full px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-space-md text-on-surface-variant text-lg pointer-events-none">search</span><input class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-10 pr-space-md py-space-xs rounded-lg placeholder-outline focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search athletes, RFID fobs, classes, or invoices (Cmd + K)..." type="text"/></div><button class="flex items-center gap-space-xs bg-primary-container text-on-primary-container px-space-md py-space-xs rounded-lg font-headline-sm text-body-sm font-semibold hover:bg-surface-tint transition-all shrink-0"><span class="material-symbols-outlined text-lg">qr_code_scanner</span><span>Fast Check-in</span></button></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container px-space-md py-space-xs rounded-full"><span class="h-2 w-2 rounded-full bg-secondary-fixed animate-ping"></span><span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Occupancy:</span><span class="font-data-mono text-data-mono text-secondary font-semibold">74%</span></div><button class="relative p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1 right-1 h-2 w-2 bg-error rounded-full"></span></button><div class="h-6 w-px bg-surface-container-high"></div><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD9pwdbHu96Kqbmmj0MsnWJxb0KCedTi7TZdE0A_Fy_uHX-S_sy0cMRvZSCBWvGazk7HBUhHKk9k8SdnAkJyB4g0sv76_qLcTEbAEMxLBsDx22VtG0iCXemHjKY_sTil2cb7vG7_MQ4NOut30HVGZ8yRUzy-a1k_oh6liEnV2Zd-txHhTebkc3nIGh0hRhYZMkYLFLWhuB4r-P49Y7rtHFnaub-r2zYpHJ35R-CR0e"/><div class="flex flex-col text-left"><span class="font-body-sm text-body-sm text-on-surface font-semibold leading-tight">Marcus Vance</span><span class="font-label-caps text-label-caps text-primary-fixed text-[10px] uppercase leading-tight">Ops Director</span></div></div></div></div></header><main class="relative pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Command Strip & Operational Controls -->
+<section class="w-full bg-surface-container-lowest px-space-lg py-space-md shadow-sm">
+<div class="flex flex-col gap-space-md">
+<!-- Upper Tier: Tactical Global Controls -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Registry Segment</span>
+<div class="flex items-center gap-space-xs mt-0.5">
+<span class="font-headline-md text-headline-md text-primary tracking-tight font-bold">Roster Manifest</span>
+<span class="bg-surface-container-high px-space-xs py-0.5 rounded text-on-surface-variant font-data-mono text-body-sm font-semibold">1,842 Enrolled</span>
+</div>
+</div>
+<div class="hidden sm:flex h-8 w-px bg-surface-container-high mx-space-xs"></div>
+<!-- Quick Status Tabs -->
+<div class="hidden sm:flex items-center bg-surface-container-low p-1 rounded-lg">
+<button class="px-space-md py-1 rounded font-label-caps text-label-caps font-semibold bg-primary-container text-on-primary-container shadow-[0_0_10px_rgba(195,244,0,0.15)] transition-all">
+              ALL <span class="font-data-mono text-[10px] opacity-80">(1,842)</span>
+</button>
+<button class="px-space-md py-1 rounded font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all">
+              ACTIVE <span class="font-data-mono text-[10px] opacity-80">(1,680)</span>
+</button>
+<button class="px-space-md py-1 rounded font-label-caps text-label-caps text-error hover:bg-surface-container transition-all">
+              EXPIRING <span class="font-data-mono text-[10px] opacity-80">(84)</span>
+</button>
+<button class="px-space-md py-1 rounded font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all">
+              FROZEN <span class="font-data-mono text-[10px] opacity-80">(78)</span>
+</button>
+</div>
+</div>
+<!-- Primary Action Triggers -->
+<div class="flex items-center gap-space-sm flex-wrap sm:flex-nowrap">
+<button class="flex items-center gap-space-xs bg-surface-container-high hover:bg-surface-variant text-on-surface font-body-sm text-body-sm px-space-md py-2 rounded-lg transition-all shadow-sm">
+<span class="material-symbols-outlined text-base">person_add_disabled</span>
+<span>Bulk Trainer</span>
+</button>
+<button class="flex items-center gap-space-xs bg-surface-container-high hover:bg-surface-variant text-on-surface font-body-sm text-body-sm px-space-md py-2 rounded-lg transition-all shadow-sm">
+<span class="material-symbols-outlined text-base">ios_share</span>
+<span>Export CSV</span>
+</button>
+<button class="flex items-center gap-space-xs bg-primary-container hover:bg-surface-tint text-on-primary-container font-headline-sm text-body-sm font-bold px-space-lg py-2 rounded-lg shadow-[0_0_14px_rgba(195,244,0,0.25)] transition-all">
+<span class="material-symbols-outlined text-lg">person_add</span>
+<span>+ Register Athlete</span>
+</button>
+</div>
+</div>
+<!-- Lower Tier: High-Efficiency Parametric Filters -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm pt-space-xs">
+<!-- Search Telemetry -->
+<div class="md:col-span-5 relative flex items-center">
+<span class="material-symbols-outlined absolute left-space-md text-on-surface-variant text-lg pointer-events-none">fingerprint</span>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-11 pr-space-md py-2 rounded-lg placeholder-outline focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" placeholder="Lookup Athlete name, RFID UID, phone (+1), or token hex..." type="text"/>
+<kbd class="hidden sm:inline-flex absolute right- space-xs right-3 px-1.5 py-0.5 text-[10px] font-data-mono bg-surface-container text-on-surface-variant rounded">⌘K</kbd>
+</div>
+<!-- Tier Dropdown -->
+<div class="md:col-span-3">
+<div class="relative w-full">
+<select class="w-full appearance-none bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary-container transition-all cursor-pointer">
+<option value="all">Access Tier: All Tiers</option>
+<option value="black">Elite Black VIP (142)</option>
+<option value="pro">Pro Performance (610)</option>
+<option value="standard">Standard Gym (1,090)</option>
+</select>
+<span class="material-symbols-outlined absolute right-space-sm top-2.5 text-on-surface-variant text-sm pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Nutrition Regimen Protocol -->
+<div class="md:col-span-3">
+<div class="relative w-full">
+<select class="w-full appearance-none bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary-container transition-all cursor-pointer">
+<option value="all">Diet Plan: All Protocols</option>
+<option value="hypertrophy">Muscle Hypertrophy / Bulk</option>
+<option value="deficit">Fat Loss Deficit</option>
+<option value="keto">Keto Protocol</option>
+<option value="endurance">Athletic Endurance</option>
+<option value="cleanse">Plant-Based Cleanse</option>
+<option value="none">None Assigned</option>
+</select>
+<span class="material-symbols-outlined absolute right-space-sm top-2.5 text-on-surface-variant text-sm pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Clear/Reset Parameters -->
+<div class="md:col-span-1 flex items-center justify-end">
+<button class="w-full h-full flex items-center justify-center bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface rounded-lg py-2 transition-all" title="Reset Filters">
+<span class="material-symbols-outlined text-lg">tune</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Live Metrics Telemetry Ribbon -->
+<div class="px-space-lg py-space-sm grid grid-cols-2 lg:grid-cols-4 gap-space-sm bg-surface-container-low">
+<div class="flex items-center gap-space-md px-space-md py-space-xs bg-surface-container rounded-lg">
+<div class="w-8 h-8 rounded bg-primary-container/10 flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined text-lg">hotel_class</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-outline uppercase tracking-wider">VIP Capacity Occupancy</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-metric-md text-headline-sm text-primary font-bold">88.4%</span>
+<span class="font-label-caps text-[10px] text-primary-fixed font-semibold">+4.2% wk</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md px-space-md py-space-xs bg-surface-container rounded-lg">
+<div class="w-8 h-8 rounded bg-secondary-container/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-lg">monitoring</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-outline uppercase tracking-wider">Diet Protocol Compliance</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-metric-md text-headline-sm text-primary font-bold">91.8%</span>
+<span class="font-label-caps text-[10px] text-secondary font-semibold">Active Engine</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md px-space-md py-space-xs bg-surface-container rounded-lg">
+<div class="w-8 h-8 rounded bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-lg">warning</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-outline uppercase tracking-wider">Renewals Expiring <7 Days</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-metric-md text-headline-sm text-error font-bold">84</span>
+<span class="font-label-caps text-[10px] text-error font-semibold">Action Required</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md px-space-md py-space-xs bg-surface-container rounded-lg">
+<div class="w-8 h-8 rounded bg-surface-bright flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-lg">sports_gymnastics</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-outline uppercase tracking-wider">Floor Saturation</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-metric-md text-headline-sm text-primary font-bold">222 / 300</span>
+<span class="font-label-caps text-[10px] text-outline font-semibold">Peak Surge</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Workspace Matrix: Roster Table + Slide-Out Detail Console -->
+<div class="px-space-lg py-space-md w-full flex flex-col xl:flex-row gap-space-md items-start">
+<!-- Main Athletes Roster Grid Container -->
+<div class="w-full xl:flex-1 bg-surface-container-low rounded-xl overflow-hidden shadow-md">
+<!-- High Density Table Header -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider border-b border-surface-container-high">
+<th class="py-space-sm pl-space-md pr-space-xs w-10">
+<input class="rounded bg-surface-container checked:bg-primary-container checked:text-on-primary-container accent-primary-container cursor-pointer" type="checkbox"/>
+</th>
+<th class="py-space-sm px-space-sm">Athlete / Member ID</th>
+<th class="py-space-sm px-space-sm">Tier</th>
+<th class="py-space-sm px-space-sm">Assigned Trainer</th>
+<th class="py-space-sm px-space-sm">Diet & Nutrition Plan</th>
+<th class="py-space-sm px-space-sm">Attendance (30d)</th>
+<th class="py-space-sm px-space-sm">Renewal Expiry</th>
+<th class="py-space-sm px-space-sm">Billing</th>
+<th class="py-space-sm pr-space-md pl-space-xs text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1: Marcus Thorne (Active Selected) -->
+<tr class="bg-surface-container/60 hover:bg-surface-container cursor-pointer transition-colors group">
+<td class="py-space-sm pl-space-md pr-space-xs">
+<input checked="" class="rounded bg-surface-container accent-primary-container cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="relative shrink-0">
+<img class="w-9 h-9 rounded-full object-cover" data-alt="Close-up portrait of athletic male Marcus Thorne with short dark buzzcut, intense focused gym expression, dramatic athletic rim lighting in deep dark gym environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAITOmgop84EmRgGPyX9NTUhTKuxABE1w-s0eUCInIuelHJcawq-l5Ab_MBA8MTSzlSZuzjyT4Ln6h9qeJQ-TX0M_F5NlkemYXqVUFaWtliOeJpWZjPEmlnf6tp0JJHwraur2Pm0zFUDSKo3XK2GYJIaH7rtZaz9vDmBGQW-MJFtZFWL_Ud0px-8l8jvhLp9QFxwVsaOlTC77pNvfdT_X9UbqrlG6SjHkuKy5qtidU"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-primary-container rounded-full ring-2 ring-surface-container-low"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-body-md text-body-md font-semibold text-primary truncate">Marcus Thorne</span>
+<span class="font-label-caps text-[9px] bg-primary-container/20 text-primary-fixed px-1 rounded uppercase font-bold">Active</span>
+</div>
+<span class="font-data-mono text-[11px] text-outline">KF-9042 • RFID: #E04B99</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1 font-label-caps text-[10px] px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary font-bold uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Elite Black VIP
+                </span>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-sm text-outline">sports</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Elena Rostova</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Muscle Hypertrophy</span>
+<span class="font-data-mono text-[11px] text-primary-fixed">Bulk 3.2k kcal • 94% Target</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-data-mono text-body-sm font-bold text-primary">22</span>
+<span class="font-body-sm text-[11px] text-outline">visits</span>
+</div>
+<span class="font-label-caps text-[10px] text-secondary">Today, 8:15 AM</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="font-data-mono text-body-sm text-on-surface">Nov 28, 2025</span>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-label-caps font-semibold uppercase bg-primary-container/15 text-primary-fixed">
+                  Paid (Auto)
+                </span>
+</td>
+<td class="py-space-sm pr-space-md pl-space-xs text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-primary-fixed transition-colors" title="Log Biometrics">
+<span class="material-symbols-outlined text-lg">vital_signs</span>
+</button>
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-secondary transition-colors" title="Edit Nutrition">
+<span class="material-symbols-outlined text-lg">nutrition</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Jessica Sterling -->
+<tr class="hover:bg-surface-container/70 cursor-pointer transition-colors group">
+<td class="py-space-sm pl-space-md pr-space-xs">
+<input class="rounded bg-surface-container accent-primary-container cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="relative shrink-0">
+<img class="w-9 h-9 rounded-full object-cover" data-alt="Studio portrait of athletic female athlete Jessica Sterling with high ponytail, intense tactical sportswear, moody gym illumination with cyan accent highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtzAnnPlXVWLTx5BFdrasC94iVkFBF9dpuqq8BHm5D4e_oWigqvAvoSnZPcjTch8RqjmNBg90ODKilK4M0HTIjU6_QpqPRRwBl4QrYSQCsmyooRYLnCvXGM1xClKw6UE7u-3Vmprwgzn0Izwb8PiKbFe2dxDYDtXrgVDdJs0FD0KidKzBE6LQe3ZFmQxtOUq7lVG49mS2JB3c_5jnw-bzpMtgvKk-xYZOByoaEC7MO"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-outline rounded-full ring-2 ring-surface-container-low"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-body-md text-body-md font-semibold text-primary truncate">Jessica Sterling</span>
+</div>
+<span class="font-data-mono text-[11px] text-outline">KF-8821 • RFID: #C392A1</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1 font-label-caps text-[10px] px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-bold uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant"></span>
+                  Pro Performance
+                </span>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-sm text-outline">sports</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">David Kim</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Fat Loss Deficit</span>
+<span class="font-data-mono text-[11px] text-outline">1.9k kcal • 88% Target</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-data-mono text-body-sm font-bold text-primary">16</span>
+<span class="font-body-sm text-[11px] text-outline">visits</span>
+</div>
+<span class="font-label-caps text-[10px] text-outline">Yesterday, 5:40 PM</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="font-data-mono text-body-sm text-on-surface">Dec 14, 2025</span>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-label-caps font-semibold uppercase bg-primary-container/15 text-primary-fixed">
+                  Paid (Auto)
+                </span>
+</td>
+<td class="py-space-sm pr-space-md pl-space-xs text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-primary-fixed transition-colors" title="Log Biometrics">
+<span class="material-symbols-outlined text-lg">vital_signs</span>
+</button>
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-secondary transition-colors" title="Edit Nutrition">
+<span class="material-symbols-outlined text-lg">nutrition</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Alex Rivera (Warning / Expiring) -->
+<tr class="hover:bg-surface-container/70 cursor-pointer transition-colors group bg-error/5">
+<td class="py-space-sm pl-space-md pr-space-xs">
+<input class="rounded bg-surface-container accent-primary-container cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="relative shrink-0">
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-sm text-on-surface">AR</div>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-error rounded-full ring-2 ring-surface-container-low"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-body-md text-body-md font-semibold text-primary truncate">Alex Rivera</span>
+<span class="font-label-caps text-[9px] bg-error-container/40 text-error px-1 rounded uppercase font-bold">Expires 5d</span>
+</div>
+<span class="font-data-mono text-[11px] text-outline">KF-7104 • RFID: #A8812D</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1 font-label-caps text-[10px] px-2 py-0.5 rounded-full bg-surface-container-high text-outline font-bold uppercase tracking-wide">
+                  Standard Gym
+                </span>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="font-body-sm text-body-sm text-outline italic">Unassigned</span>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Keto Protocol</span>
+<span class="font-data-mono text-[11px] text-outline">2.2k kcal • No Coach</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-data-mono text-body-sm font-bold text-primary">12</span>
+<span class="font-body-sm text-[11px] text-outline">visits</span>
+</div>
+<span class="font-label-caps text-[10px] text-outline">2 days ago</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<span class="font-data-mono text-body-sm text-error font-bold">Oct 29, 2025</span>
+<span class="font-label-caps text-[10px] text-error">Warning: Expiring</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-label-caps font-semibold uppercase bg-error-container/30 text-error">
+                  Card Declined
+                </span>
+</td>
+<td class="py-space-sm pr-space-md pl-space-xs text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-primary-fixed transition-colors" title="Log Biometrics">
+<span class="material-symbols-outlined text-lg">vital_signs</span>
+</button>
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-secondary transition-colors" title="Edit Nutrition">
+<span class="material-symbols-outlined text-lg">nutrition</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Chloe Dupont -->
+<tr class="hover:bg-surface-container/70 cursor-pointer transition-colors group">
+<td class="py-space-sm pl-space-md pr-space-xs">
+<input class="rounded bg-surface-container accent-primary-container cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="relative shrink-0">
+<img class="w-9 h-9 rounded-full object-cover" data-alt="Athletic French woman Chloe Dupont with focused gaze, high intensity conditioning attire in a dark minimalist training facility with lime green accent lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD62xV9Ahf7vfD4WSvxh_-fb86XFaWFSkopyyc9u7PwAm1CZXI1nAXltJu-tWy6VPpxpL5-YHeM80jKpZnUpeMseJpNgeV49uhvuHkR7VAo-L3HDPgD_eHAPQAagoam3KIIbIvEqlPUI0GTvky8GvkopqdteBolIs95d7fylY38rn2OeVUJ9SSjFLncnJCfyWbUO9Fnp3isSH4-PfYguFlbs1r14xQArwLBbcJ600Js"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-primary-container rounded-full ring-2 ring-surface-container-low"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-body-md text-body-md font-semibold text-primary truncate">Chloe Dupont</span>
+<span class="font-label-caps text-[9px] bg-secondary-container/20 text-secondary px-1 rounded uppercase font-bold">Top 5%</span>
+</div>
+<span class="font-data-mono text-[11px] text-outline">KF-9520 • RFID: #DD33E2</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1 font-label-caps text-[10px] px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary font-bold uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Elite Black VIP
+                </span>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-sm text-outline">sports</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Liam Brooks</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Athletic Endurance</span>
+<span class="font-data-mono text-[11px] text-secondary">2.8k kcal • VO2 Max Track</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-data-mono text-body-sm font-bold text-primary">26</span>
+<span class="font-body-sm text-[11px] text-outline">visits</span>
+</div>
+<span class="font-label-caps text-[10px] text-secondary">Today, 6:45 AM</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="font-data-mono text-body-sm text-on-surface">Feb 18, 2026</span>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-label-caps font-semibold uppercase bg-primary-container/15 text-primary-fixed">
+                  Paid (Auto)
+                </span>
+</td>
+<td class="py-space-sm pr-space-md pl-space-xs text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-primary-fixed transition-colors" title="Log Biometrics">
+<span class="material-symbols-outlined text-lg">vital_signs</span>
+</button>
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-secondary transition-colors" title="Edit Nutrition">
+<span class="material-symbols-outlined text-lg">nutrition</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Tariq Al-Mansoor -->
+<tr class="hover:bg-surface-container/70 cursor-pointer transition-colors group">
+<td class="py-space-sm pl-space-md pr-space-xs">
+<input class="rounded bg-surface-container accent-primary-container cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="relative shrink-0">
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-sm text-primary">TA</div>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-primary-container rounded-full ring-2 ring-surface-container-low"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-body-md text-body-md font-semibold text-primary truncate">Tariq Al-Mansoor</span>
+</div>
+<span class="font-data-mono text-[11px] text-outline">KF-8319 • RFID: #4491FF</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1 font-label-caps text-[10px] px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-bold uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant"></span>
+                  Pro Performance
+                </span>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-sm text-outline">sports</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Elena Rostova</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Plant-Based Cleanse</span>
+<span class="font-data-mono text-[11px] text-outline">2.1k kcal • Micro-Cycle 3</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-data-mono text-body-sm font-bold text-primary">19</span>
+<span class="font-body-sm text-[11px] text-outline">visits</span>
+</div>
+<span class="font-label-caps text-[10px] text-primary-fixed">Today, 11:30 AM</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="font-data-mono text-body-sm text-on-surface">Jan 10, 2026</span>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-label-caps font-semibold uppercase bg-primary-container/15 text-primary-fixed">
+                  Paid (Auto)
+                </span>
+</td>
+<td class="py-space-sm pr-space-md pl-space-xs text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-primary-fixed transition-colors" title="Log Biometrics">
+<span class="material-symbols-outlined text-lg">vital_signs</span>
+</button>
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-secondary transition-colors" title="Edit Nutrition">
+<span class="material-symbols-outlined text-lg">nutrition</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Emily Watson -->
+<tr class="hover:bg-surface-container/70 cursor-pointer transition-colors group">
+<td class="py-space-sm pl-space-md pr-space-xs">
+<input class="rounded bg-surface-container accent-primary-container cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="relative shrink-0">
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-sm text-on-surface">EW</div>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-outline rounded-full ring-2 ring-surface-container-low"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-body-md text-body-md font-semibold text-primary truncate">Emily Watson</span>
+</div>
+<span class="font-data-mono text-[11px] text-outline">KF-6602 • RFID: #5512B0</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1 font-label-caps text-[10px] px-2 py-0.5 rounded-full bg-surface-container-high text-outline font-bold uppercase tracking-wide">
+                  Standard Gym
+                </span>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-sm text-outline">sports</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">David Kim</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Fat Loss Deficit</span>
+<span class="font-data-mono text-[11px] text-outline">1.8k kcal • 76% Target</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-data-mono text-body-sm font-bold text-primary">9</span>
+<span class="font-body-sm text-[11px] text-outline">visits</span>
+</div>
+<span class="font-label-caps text-[10px] text-outline">3 days ago</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="font-data-mono text-body-sm text-on-surface">Nov 04, 2025</span>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-label-caps font-semibold uppercase bg-primary-container/15 text-primary-fixed">
+                  Paid (Auto)
+                </span>
+</td>
+<td class="py-space-sm pr-space-md pl-space-xs text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-primary-fixed transition-colors" title="Log Biometrics">
+<span class="material-symbols-outlined text-lg">vital_signs</span>
+</button>
+<button class="p-1 hover:bg-surface-bright rounded text-on-surface-variant hover:text-secondary transition-colors" title="Edit Nutrition">
+<span class="material-symbols-outlined text-lg">nutrition</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination & Density Summary Footer -->
+<div class="p-space-md bg-surface-container-lowest flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-caps text-label-caps text-outline uppercase">Showing 1-6 of 1,842 Members</span>
+<span class="text-surface-container-high">•</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Page 1 of 307</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="p-1.5 rounded bg-surface-container text-outline opacity-50 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<button class="px-2.5 py-1 rounded bg-primary-container text-on-primary-container font-data-mono text-body-sm font-bold">1</button>
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-bright text-on-surface font-data-mono text-body-sm">2</button>
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-bright text-on-surface font-data-mono text-body-sm">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-bright text-on-surface font-data-mono text-body-sm">307</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-bright text-on-surface transition-colors">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Details & InBody Diagnostic Telemetry Card -->
+<div class="w-full xl:w-[410px] shrink-0 bg-surface-container-low rounded-xl p-space-lg shadow-xl flex flex-col gap-space-md">
+<!-- Card Header: Profile Summary -->
+<div class="flex items-start justify-between pb-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="relative">
+<img class="w-14 h-14 rounded-xl object-cover ring-2 ring-primary-container" data-alt="Athletic high performance portrait of Marcus Thorne, black compression shirt, strong posture with electric lime subtle back-lighting in dark gym suite" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ7X6oXDObNY9ZFd3Xot7CBx-lS0TJnE-YsvDwGXJFYbXTf1YcbaS4c90FKoxLMn7AjbLvTecbU61skCs1VOJjByvbZZTT3cPjmIyEnHVoKZ1nDcGhjy-yY-uWEylwidbOyQiOg9WL2huWW3oAsqXsZVuR5oV-d6PS6xMEegIIsbUEaS1FjDgWHTPwzLI1gZYZJy_hlLE6ZItzgASs3OF5SJjLi2T92xQ-M2H_4wCW"/>
+<span class="absolute -bottom-1 -right-1 bg-primary-container text-on-primary-container text-[10px] font-bold px-1 rounded uppercase">VIP</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Marcus Thorne</span>
+<span class="font-label-caps text-label-caps text-outline uppercase">Active Member • Downtown Hub</span>
+<span class="font-data-mono text-[11px] text-secondary font-semibold">Trainer: Elena Rostova</span>
+</div>
+</div>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-xl">open_in_new</span>
+</button>
+</div>
+<!-- InBody Diagnostic Telemetry Widget -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-fixed text-base">monitor_heart</span>
+<span class="font-label-caps text-label-caps text-primary-fixed uppercase tracking-wider">InBody Composition 770</span>
+</div>
+<span class="font-label-caps text-[10px] text-outline">Scan: Oct 18, 2025</span>
+</div>
+<div class="grid grid-cols-3 gap-space-xs pt-space-xs">
+<!-- Metric 1: Body Fat -->
+<div class="bg-surface-container-high p-space-xs rounded-lg flex flex-col">
+<span class="font-label-caps text-[10px] text-outline uppercase">Body Fat</span>
+<span class="font-metric-md text-headline-sm text-primary font-bold">13.2%</span>
+<div class="flex items-center text-primary-fixed font-label-caps text-[10px] font-bold">
+<span class="material-symbols-outlined text-xs">arrow_downward</span>
+<span>2.1% (30d)</span>
+</div>
+</div>
+<!-- Metric 2: Muscle Mass -->
+<div class="bg-surface-container-high p-space-xs rounded-lg flex flex-col">
+<span class="font-label-caps text-[10px] text-outline uppercase">Muscle Mass</span>
+<span class="font-metric-md text-headline-sm text-primary font-bold">42.4<span class="text-xs font-normal">kg</span></span>
+<div class="flex items-center text-primary-fixed font-label-caps text-[10px] font-bold">
+<span class="material-symbols-outlined text-xs">arrow_upward</span>
+<span>+1.8 kg</span>
+</div>
+</div>
+<!-- Metric 3: BMI -->
+<div class="bg-surface-container-high p-space-xs rounded-lg flex flex-col">
+<span class="font-label-caps text-[10px] text-outline uppercase">BMI Value</span>
+<span class="font-metric-md text-headline-sm text-primary font-bold">24.1</span>
+<span class="font-label-caps text-[10px] text-secondary font-semibold">Optimal Zone</span>
+</div>
+</div>
+<!-- Inline SVG Visualization: Bio Impedance Distribution Sparkline -->
+<div class="mt-space-xs bg-surface-container-lowest p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex justify-between items-center text-[10px] font-label-caps text-outline">
+<span>Hypertrophy Progression Delta</span>
+<span class="text-primary-fixed font-data-mono">+8.4% Efficiency</span>
+</div>
+<svg class="w-full h-10 text-primary-container" fill="none" viewbox="0 0 200 40">
+<path d="M 0 35 Q 25 30 50 28 T 100 20 T 150 14 T 200 4" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M 0 35 Q 25 30 50 28 T 100 20 T 150 14 T 200 4 L 200 40 L 0 40 Z" fill="currentColor" fill-opacity="0.1"></path>
+<circle class="fill-primary-container" cx="200" cy="4" r="3.5"></circle>
+</svg>
+</div>
+</div>
+<!-- Current Diet Architecture Card -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">restaurant</span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase font-bold tracking-wider">Hypertrophy Phase 2</span>
+</div>
+<span class="bg-primary-container/20 text-primary-fixed font-data-mono text-[10px] px-1.5 py-0.5 rounded font-bold">94% COMPLIANT</span>
+</div>
+<!-- Macro Telemetry Bars -->
+<div class="flex flex-col gap-space-xs pt-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface-variant font-medium">Protein Target</span>
+<span class="font-data-mono text-primary font-bold">206g <span class="text-outline font-normal">/ 220g daily</span></span>
+</div>
+<div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 93.6%"></div>
+</div>
+<div class="flex justify-between items-center text-body-sm font-body-sm mt-1">
+<span class="text-on-surface-variant font-medium">Weekly Strength Sessions</span>
+<span class="font-data-mono text-primary font-bold">4 <span class="text-outline font-normal">/ 4 complete</span></span>
+</div>
+<div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<!-- Protocol Action Directive & Next Event -->
+<div class="bg-surface-container-high p-space-md rounded-xl flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-secondary">
+<span class="material-symbols-outlined text-base">event_upcoming</span>
+<span class="font-label-caps text-label-caps uppercase font-bold">Next Milestone Check-in</span>
+</div>
+<span class="font-body-md text-body-md text-primary font-semibold">Scheduled: Full Body Composition Dual-Scan</span>
+<span class="font-label-caps text-label-caps text-outline">Friday, Oct 31 • 07:30 AM with Elena Rostova</span>
+</div>
+<!-- Quick Operational Action Cluster -->
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<button class="w-full py-2 bg-surface-container hover:bg-surface-bright text-on-surface font-headline-sm text-body-sm font-bold rounded-lg transition-all flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-base">vital_signs</span>
+<span>Log Assessment</span>
+</button>
+<button class="w-full py-2 bg-primary-container hover:bg-surface-tint text-on-primary-container font-headline-sm text-body-sm font-bold rounded-lg transition-all flex items-center justify-center gap-1 shadow-[0_0_12px_rgba(195,244,0,0.2)]">
+<span class="material-symbols-outlined text-base">edit_calendar</span>
+<span>Adjust Macros</span>
+</button>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

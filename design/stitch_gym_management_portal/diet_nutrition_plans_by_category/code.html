@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#2b313c", "inverse-on-surface": "#2e3036", "outline": "#8e9379", "background": "#111319", "surface-container-lowest": "#0b0e13", "secondary-fixed-dim": "#00dbe9", "primary": "#ffffff", "secondary-fixed": "#7df4ff", "on-secondary": "#00363a", "surface-tint": "#abd600", "on-error": "#690005", "inverse-surface": "#e1e2ea", "surface-container-high": "#272a30", "tertiary-fixed-dim": "#c1c6d5", "primary-container": "#c3f400", "on-surface": "#e1e2ea", "tertiary": "#ffffff", "on-secondary-container": "#00686f", "surface-variant": "#32353b", "on-surface-variant": "#c4c9ac", "surface-container-low": "#191c21", "inverse-primary": "#506600", "secondary-container": "#00eefc", "surface-container-highest": "#32353b", "primary-fixed": "#c3f400", "error": "#ffb4ab", "surface-bright": "#36393f", "surface-dim": "#111319", "on-primary-fixed-variant": "#3c4d00", "outline-variant": "#444933", "tertiary-container": "#dde2f2", "surface-container": "#1d2025", "surface": "#111319", "on-tertiary-container": "#5e6471", "on-primary-fixed": "#161e00", "primary-fixed-dim": "#abd600", "on-tertiary-fixed": "#161c26", "on-background": "#e1e2ea", "error-container": "#93000a", "on-secondary-fixed-variant": "#004f54", "on-secondary-fixed": "#002022", "secondary": "#d3fbff", "on-primary-container": "#556d00", "on-error-container": "#ffdad6", "tertiary-fixed": "#dde2f2", "on-primary": "#283500", "on-tertiary-fixed-variant": "#414753" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter": "1rem", "gutter-desktop": "1.5rem", "margin": "1rem", "space-sm": "0.5rem", "margin-desktop": "2rem", "space-md": "1rem", "space-xl": "2rem", "space-xxs": "0.125rem", "space-2xl": "3rem", "space-xs": "0.25rem", "space-lg": "1.5rem" }, "fontFamily": { "headline-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "display-hero-mobile": ["Plus Jakarta Sans"], "metric-md": ["Plus Jakarta Sans"], "body-md": ["Inter"], "metric-xl": ["Plus Jakarta Sans"], "label-caps": ["JetBrains Mono"], "display-hero": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "data-mono": ["JetBrains Mono"], "body-lg": ["Inter"], "headline-sm": ["Plus Jakarta Sans"] }, "fontSize": { "headline-lg": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg-mobile": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-hero-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "metric-md": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }], "metric-xl": ["36px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }], "display-hero": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400" }], "data-mono": ["13px", { "lineHeight": "16px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.3)]"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center justify-between bg-surface-container-lowest"><div class="flex items-center gap-space-sm"><img alt="KineticFit Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WN3thGy23HWNYfH0iDPeW94zA94uq1Ic8i-kgYwS9SRtsI19jlA2wbHrgQLb8dbAdNVC03Fh55FE2eAsl4i-XNnCbhcXnlelO3dcpJSrm2yeCUS4fRha8fpGWv77Dhwa9G71fr4qWGUYKIh2JjZaI73CigoWmAYFdcW_V1fgD7WsHs5lqT6KulAdpzRCo26sSUCDwkNuFS7IiA_tyseyO0xPHu-vqMOC3Nv1tAz5cS"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">KineticFit</span><span class="font-label-caps text-label-caps text-primary-fixed uppercase tracking-wider">OS Engine</span></div></div><span class="h-2 w-2 rounded-full bg-primary-fixed animate-pulse"></span></div><div class="p-space-md"><div class="bg-surface-container px-space-md py-space-sm rounded-lg flex items-center justify-between"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-secondary text-base">location_on</span><div class="flex flex-col"><span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Active Hub</span><span class="font-body-sm text-body-sm text-on-surface font-semibold truncate max-w-[120px]">Downtown Flagship</span></div></div><span class="material-symbols-outlined text-on-surface-variant text-sm">unfold_more</span></div></div><nav class="flex flex-col gap-space-xxs px-space-md" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_0_12px_rgba(195,244,0,0.2)]"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-lg">grid_view</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="members-directory" href="#"><span class="material-symbols-outlined text-lg">group</span><span class="font-body-md text-body-md">Members Directory</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="class-schedule" href="#"><span class="material-symbols-outlined text-lg">calendar_month</span><span class="font-body-md text-body-md">Class Schedule</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-all bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_0_12px_rgba(195,244,0,0.2)]" data-path="diet-and-nutrition-plans" href="#"><span class="material-symbols-outlined text-lg">nutrition</span><span class="font-body-md text-body-md">Diet & Nutrition</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="trainers-and-staff" href="#"><span class="material-symbols-outlined text-lg">sports</span><span class="font-body-md text-body-md">Trainers & Staff</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="financials-and-billing" href="#"><span class="material-symbols-outlined text-lg">payments</span><span class="font-body-md text-body-md">Financials & Billing</span></a></nav></div><div class="p-space-md flex flex-col gap-space-sm"><div class="bg-surface-container-high p-space-md rounded-lg flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Floor Live Saturation</span><span class="font-data-mono text-data-mono text-secondary font-semibold">74%</span></div><div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden"><div class="bg-secondary-container h-full rounded-full" style="width: 74%"></div></div><span class="font-label-caps text-label-caps text-outline text-[10px]">Capacity: 222/300 Athletes</span></div><div class="text-center"><span class="font-label-caps text-label-caps text-outline uppercase tracking-widest text-[9px]">KineticFit v4.2 Enterprise</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/80 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.1)]"><div class="w-full h-full px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-space-md text-on-surface-variant text-lg pointer-events-none">search</span><input class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-10 pr-space-md py-space-xs rounded-lg placeholder-outline focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search athletes, RFID fobs, classes, or invoices (Cmd + K)..." type="text"/></div><button class="flex items-center gap-space-xs bg-primary-container text-on-primary-container px-space-md py-space-xs rounded-lg font-headline-sm text-body-sm font-semibold hover:bg-surface-tint transition-all shrink-0"><span class="material-symbols-outlined text-lg">qr_code_scanner</span><span>Fast Check-in</span></button></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container px-space-md py-space-xs rounded-full"><span class="h-2 w-2 rounded-full bg-secondary-fixed animate-ping"></span><span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Occupancy:</span><span class="font-data-mono text-data-mono text-secondary font-semibold">74%</span></div><button class="relative p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1 right-1 h-2 w-2 bg-error rounded-full"></span></button><div class="h-6 w-px bg-surface-container-high"></div><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD9pwdbHu96Kqbmmj0MsnWJxb0KCedTi7TZdE0A_Fy_uHX-S_sy0cMRvZSCBWvGazk7HBUhHKk9k8SdnAkJyB4g0sv76_qLcTEbAEMxLBsDx22VtG0iCXemHjKY_sTil2cb7vG7_MQ4NOut30HVGZ8yRUzy-a1k_oh6liEnV2Zd-txHhTebkc3nIGh0hRhYZMkYLFLWhuB4r-P49Y7rtHFnaub-r2zYpHJ35R-CR0e"/><div class="flex flex-col text-left"><span class="font-body-sm text-body-sm text-on-surface font-semibold leading-tight">Marcus Vance</span><span class="font-label-caps text-label-caps text-primary-fixed text-[10px] uppercase leading-tight">Ops Director</span></div></div></div></div></header><main class="relative pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="px-gutter-desktop py-space-lg flex flex-col gap-space-lg max-w-[1720px] mx-auto w-full">
+<!-- Top Hub Title and Strategic Header -->
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-primary-fixed"></span>
+<span class="font-label-caps text-label-caps uppercase text-primary-fixed tracking-widest">Metabolic Telemetry & Nutritional Architecture</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Diet & Nutrition Management Hub</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Categorized dietary protocols, macronutrient targets, personalized meal charts, and high-velocity athlete compliance tracking.
+        </p>
+</div>
+<!-- Quick Operational Controls -->
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<div class="relative min-w-[260px]">
+<span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-base pointer-events-none">search</span>
+<input class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-9 pr-space-md py-space-xs rounded-lg placeholder-outline focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" id="planSearchInput" placeholder="Filter protocols or ingredients..." type="text"/>
+</div>
+<button class="flex items-center gap-space-xs bg-surface-container-high hover:bg-surface-bright text-on-surface px-space-md py-space-xs rounded-lg font-headline-sm text-body-sm font-semibold transition-all">
+<span class="material-symbols-outlined text-base">picture_as_pdf</span>
+<span>Export Meal Guide PDF</span>
+</button>
+<button class="flex items-center gap-space-xs bg-primary-container text-on-primary-container px-space-md py-space-xs rounded-lg font-headline-sm text-body-sm font-semibold hover:bg-surface-tint shadow-[0_0_16px_rgba(195,244,0,0.2)] transition-all">
+<span class="material-symbols-outlined text-base">add_circle</span>
+<span>+ Create New Diet Protocol</span>
+</button>
+</div>
+</div>
+<!-- Category Filter Pills Strip -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-space-xxs text-nowrap scrollbar-none">
+<button class="filter-pill active px-space-md py-1.5 rounded-full font-label-caps text-label-caps bg-primary-container text-on-primary-container uppercase transition-all shadow-[0_0_12px_rgba(195,244,0,0.25)]">All Protocols (14)</button>
+<button class="filter-pill px-space-md py-1.5 rounded-full font-label-caps text-label-caps bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface uppercase transition-all">Weight Loss & Deficit (5)</button>
+<button class="filter-pill px-space-md py-1.5 rounded-full font-label-caps text-label-caps bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface uppercase transition-all">Muscle Hypertrophy & Bulk (4)</button>
+<button class="filter-pill px-space-md py-1.5 rounded-full font-label-caps text-label-caps bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface uppercase transition-all">Keto & Low Carb (2)</button>
+<button class="filter-pill px-space-md py-1.5 rounded-full font-label-caps text-label-caps bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface uppercase transition-all">Athletic Endurance (2)</button>
+<button class="filter-pill px-space-md py-1.5 rounded-full font-label-caps text-label-caps bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface uppercase transition-all">Plant-Based / Cleanse (1)</button>
+<button class="filter-pill px-space-md py-1.5 rounded-full font-label-caps text-label-caps bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface uppercase transition-all">Rehab & Recovery</button>
+</div>
+<!-- 4 Featured Category Overview Cards (Tabs / Switcher Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1: Hypertrophy -->
+<div class="protocol-card group cursor-pointer bg-surface-container-low hover:bg-surface-container p-space-md rounded-xl transition-all flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/15 text-secondary text-[10px] font-label-caps uppercase tracking-wider">High Protein (40P / 40C / 20F)</span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">group</span>
+<span class="font-data-mono text-body-sm text-secondary">248</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary-fixed transition-colors">Hypertrophy & Mass Gain</h2>
+<span class="font-data-mono text-body-sm text-on-surface-variant">3,000 – 3,500 kcal / day</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">
+            Lean muscle synthesis, post-workout glycogen replenishment, and timed creatine-leucine spikes for hypertrophy.
+          </p>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-[10px] uppercase text-outline">Tier: Power Athlete</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform text-base">arrow_forward</span>
+</div>
+</div>
+<!-- Card 2: Fat Loss & Cut (Active Protocol Target) -->
+<div class="protocol-card active relative cursor-pointer bg-surface-container p-space-md rounded-xl shadow-[0_0_20px_rgba(195,244,0,0.12)] transition-all flex flex-col justify-between gap-space-md">
+<div class="absolute -top-2.5 right-4 bg-primary-container text-on-primary-container px-2 py-0.5 rounded-full font-label-caps text-[9px] uppercase font-bold tracking-widest shadow-md">
+          Active Protocol
+        </div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-primary-container/15 text-primary-fixed text-[10px] font-label-caps uppercase tracking-wider">Caloric Deficit (45P / 25C / 30F)</span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">group</span>
+<span class="font-data-mono text-body-sm text-primary-fixed">312</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Fat Loss & Metabolic Cut</h2>
+<span class="font-data-mono text-body-sm text-primary-fixed font-semibold">1,800 – 2,100 kcal / day</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">
+            Satiety indexing, thermogenic whole foods, targeted cortisol control, and clean intermittent fasting windows.
+          </p>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed animate-pulse"></span>
+<span class="font-label-caps text-[10px] uppercase text-primary-fixed">Active Deployment</span>
+</div>
+<span class="material-symbols-outlined text-primary-fixed text-base">tune</span>
+</div>
+</div>
+<!-- Card 3: Keto & Metabolic Flexibility -->
+<div class="protocol-card group cursor-pointer bg-surface-container-low hover:bg-surface-container p-space-md rounded-xl transition-all flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-tertiary-fixed-dim text-[10px] font-label-caps uppercase tracking-wider">High Fat (15P / 5C / 80F)</span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">group</span>
+<span class="font-data-mono text-body-sm text-on-surface">115</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary-fixed transition-colors">Keto & Metabolic Flexibility</h2>
+<span class="font-data-mono text-body-sm text-on-surface-variant">2,200 kcal / day</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">
+            Deep nutritional ketosis, sustained mitochondrial output without glucose spikes, MCT-6 electrolyte support.
+          </p>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<span class="font-label-caps text-[10px] uppercase text-outline">Tier: Ketogenic Cut</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform text-base">arrow_forward</span>
+</div>
+</div>
+<!-- Card 4: Endurance & Stamina Engine -->
+<div class="protocol-card group cursor-pointer bg-surface-container-low hover:bg-surface-container p-space-md rounded-xl transition-all flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-secondary text-[10px] font-label-caps uppercase tracking-wider">High Complex Carb (25P / 55C / 20F)</span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">group</span>
+<span class="font-data-mono text-body-sm text-on-surface">94</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary-fixed transition-colors">Endurance & Stamina Engine</h2>
+<span class="font-data-mono text-body-sm text-on-surface-variant">2,800 kcal / day</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">
+            Triathlete and marathon conditioning, intra-workout cyclodextrin, systemic anti-inflammatory plant compounds.
+          </p>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span>
+<span class="font-label-caps text-[10px] uppercase text-outline">Tier: Cardio Hybrid</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform text-base">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Active Diet Interactive Command Grid: Split Layout (Main Chart vs Sidebar Telemetry) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left/Main Column: Active Protocol Breakdown (8 Cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Detailed Target Telemetry Banner -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary-fixed text-2xl">local_fire_department</span>
+<div>
+<span class="font-label-caps text-[10px] uppercase text-outline tracking-wider">Active Nutrition Specification</span>
+<h3 class="font-headline-md text-headline-md text-primary">Fat Loss & Metabolic Cut Protocol</h3>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-2.5 py-1 rounded-full bg-primary-container/15 text-primary-fixed font-data-mono text-body-sm font-semibold">1,950 Daily kcal</span>
+<button class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Edit Macro Thresholds">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</div>
+<!-- 5 Key Macro Bars -->
+<div class="grid grid-cols-2 sm:grid-cols-5 gap-space-sm pt-space-xs">
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Target Calories</span>
+<span class="font-metric-md text-metric-md text-primary">1,950</span>
+<span class="font-body-sm text-[11px] text-outline mt-0.5">kcal / 24hr cycle</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Protein</span>
+<span class="font-label-caps text-[10px] text-primary-fixed">45%</span>
+</div>
+<span class="font-metric-md text-metric-md text-primary-fixed">210<span class="text-xs font-normal text-on-surface-variant ml-0.5">g</span></span>
+<span class="font-body-sm text-[11px] text-outline mt-0.5">2.2g / kg bodyweight</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Carbohydrates</span>
+<span class="font-label-caps text-[10px] text-secondary">25%</span>
+</div>
+<span class="font-metric-md text-metric-md text-secondary">120<span class="text-xs font-normal text-on-surface-variant ml-0.5">g</span></span>
+<span class="font-body-sm text-[11px] text-outline mt-0.5">Complex glycemic</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Fats</span>
+<span class="font-label-caps text-[10px] text-tertiary-fixed-dim">30%</span>
+</div>
+<span class="font-metric-md text-metric-md text-primary">65<span class="text-xs font-normal text-on-surface-variant ml-0.5">g</span></span>
+<span class="font-body-sm text-[11px] text-outline mt-0.5">Omega-3 & Mono-unsat</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col col-span-2 sm:col-span-1">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Hydration</span>
+<span class="material-symbols-outlined text-secondary-fixed text-xs">water_drop</span>
+</div>
+<span class="font-metric-md text-metric-md text-secondary-fixed">3.8<span class="text-xs font-normal text-on-surface-variant ml-0.5">L</span></span>
+<span class="font-body-sm text-[11px] text-outline mt-0.5">+ Electrolyte replenishment</span>
+</div>
+</div>
+</div>
+<!-- Meal Schedule Feed / Data Matrix -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-lg">restaurant_menu</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Daily Chrono-Nutritional Timeline</h4>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-outline">6 Daily Telemetric Blocks</span>
+</div>
+<!-- Schedule List -->
+<div class="flex flex-col gap-space-sm">
+<!-- Meal 1 -->
+<div class="bg-surface-container hover:bg-surface-container-high transition-colors p-space-md rounded-lg flex flex-col md:flex-row gap-space-md justify-between items-start md:items-center">
+<div class="flex items-start gap-space-md">
+<div class="flex flex-col items-center justify-center bg-surface-container-lowest px-2.5 py-1.5 rounded text-center shrink-0 min-w-[70px]">
+<span class="font-data-mono text-[11px] text-primary-fixed font-bold leading-tight">07:30 AM</span>
+<span class="font-label-caps text-[9px] text-outline uppercase tracking-wider">Meal 1</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-body-lg text-primary font-semibold">Power Breakfast Scramble</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-variant font-label-caps text-[9px] text-on-surface-variant uppercase">Glycogen Baseline</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                    Egg white scramble (6 whites) with baby spinach, 1 whole omega-3 egg, 40g steel-cut oats with cinnamon & fresh blueberries.
+                  </p>
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary-fixed">info</span>
+                    Prep Note: Cook eggs in olive oil spray only. Add pinch of Himalayan pink salt.
+                  </span>
+</div>
+</div>
+<div class="flex flex-row md:flex-col items-end gap-1.5 shrink-0 self-end md:self-center">
+<span class="font-data-mono text-body-sm text-primary font-bold">400 kcal</span>
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 bg-primary-container/10 text-primary-fixed rounded font-data-mono text-[10px]">38g P</span>
+<span class="px-1.5 py-0.5 bg-secondary-container/10 text-secondary rounded font-data-mono text-[10px]">35g C</span>
+<span class="px-1.5 py-0.5 bg-surface-variant text-on-surface rounded font-data-mono text-[10px]">12g F</span>
+</div>
+</div>
+</div>
+<!-- Snack 1 -->
+<div class="bg-surface-container hover:bg-surface-container-high transition-colors p-space-md rounded-lg flex flex-col md:flex-row gap-space-md justify-between items-start md:items-center">
+<div class="flex items-start gap-space-md">
+<div class="flex flex-col items-center justify-center bg-surface-container-lowest px-2.5 py-1.5 rounded text-center shrink-0 min-w-[70px]">
+<span class="font-data-mono text-[11px] text-secondary font-bold leading-tight">10:30 AM</span>
+<span class="font-label-caps text-[9px] text-outline uppercase tracking-wider">Snack 1</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-body-lg text-primary font-semibold">Pre-Workout Priming Fuel</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/15 font-label-caps text-[9px] text-secondary uppercase">Workout -45m</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                    KineticFit Hydro Whey isolate shake (1.5 scoops with cold water), 1 crisp Granny Smith apple, 15 raw unsalted almonds.
+                  </p>
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary">flash_on</span>
+                    Timing: Ingest 45 minutes prior to High-Intensity Resistance Training session.
+                  </span>
+</div>
+</div>
+<div class="flex flex-row md:flex-col items-end gap-1.5 shrink-0 self-end md:self-center">
+<span class="font-data-mono text-body-sm text-primary font-bold">290 kcal</span>
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 bg-primary-container/10 text-primary-fixed rounded font-data-mono text-[10px]">30g P</span>
+<span class="px-1.5 py-0.5 bg-secondary-container/10 text-secondary rounded font-data-mono text-[10px]">22g C</span>
+<span class="px-1.5 py-0.5 bg-surface-variant text-on-surface rounded font-data-mono text-[10px]">9g F</span>
+</div>
+</div>
+</div>
+<!-- Meal 2 -->
+<div class="bg-surface-container hover:bg-surface-container-high transition-colors p-space-md rounded-lg flex flex-col md:flex-row gap-space-md justify-between items-start md:items-center">
+<div class="flex items-start gap-space-md">
+<div class="flex flex-col items-center justify-center bg-surface-container-lowest px-2.5 py-1.5 rounded text-center shrink-0 min-w-[70px]">
+<span class="font-data-mono text-[11px] text-primary-fixed font-bold leading-tight">01:30 PM</span>
+<span class="font-label-caps text-[9px] text-outline uppercase tracking-wider">Meal 2</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-body-lg text-primary font-semibold">Post-Workout Anabolic Plate</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-container/15 font-label-caps text-[9px] text-primary-fixed uppercase">High Protein Peak</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                    200g grilled lemon herb chicken breast, 150g baked sweet potato cubes, steamed asparagus & tender broccoli florets with cold-pressed olive oil drizzle.
+                  </p>
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary-fixed">check_circle</span>
+                    Prep Note: Steam vegetables crisp to preserve antioxidant and glucosinolate matrix.
+                  </span>
+</div>
+</div>
+<div class="flex flex-row md:flex-col items-end gap-1.5 shrink-0 self-end md:self-center">
+<span class="font-data-mono text-body-sm text-primary font-bold">490 kcal</span>
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 bg-primary-container/10 text-primary-fixed rounded font-data-mono text-[10px]">52g P</span>
+<span class="px-1.5 py-0.5 bg-secondary-container/10 text-secondary rounded font-data-mono text-[10px]">40g C</span>
+<span class="px-1.5 py-0.5 bg-surface-variant text-on-surface rounded font-data-mono text-[10px]">14g F</span>
+</div>
+</div>
+</div>
+<!-- Snack 2 -->
+<div class="bg-surface-container hover:bg-surface-container-high transition-colors p-space-md rounded-lg flex flex-col md:flex-row gap-space-md justify-between items-start md:items-center">
+<div class="flex items-start gap-space-md">
+<div class="flex flex-col items-center justify-center bg-surface-container-lowest px-2.5 py-1.5 rounded text-center shrink-0 min-w-[70px]">
+<span class="font-data-mono text-[11px] text-on-surface font-bold leading-tight">04:30 PM</span>
+<span class="font-label-caps text-[9px] text-outline uppercase tracking-wider">Snack 2</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-body-lg text-primary font-semibold">Mid-Day Satiety & Gut Modulation</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-variant font-label-caps text-[9px] text-on-surface-variant uppercase">Probiotic Boost</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                    Low-fat Greek yogurt (0% fat, 175g) layered with organic chia seeds (10g) and crisp Persian cucumber spears with mineral sea salt.
+                  </p>
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-outline">schedule</span>
+                    Prevents evening insulin rebound and controls ghrelin secretion.
+                  </span>
+</div>
+</div>
+<div class="flex flex-row md:flex-col items-end gap-1.5 shrink-0 self-end md:self-center">
+<span class="font-data-mono text-body-sm text-primary font-bold">160 kcal</span>
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 bg-primary-container/10 text-primary-fixed rounded font-data-mono text-[10px]">22g P</span>
+<span class="px-1.5 py-0.5 bg-secondary-container/10 text-secondary rounded font-data-mono text-[10px]">10g C</span>
+<span class="px-1.5 py-0.5 bg-surface-variant text-on-surface rounded font-data-mono text-[10px]">4g F</span>
+</div>
+</div>
+</div>
+<!-- Meal 3 -->
+<div class="bg-surface-container hover:bg-surface-container-high transition-colors p-space-md rounded-lg flex flex-col md:flex-row gap-space-md justify-between items-start md:items-center">
+<div class="flex items-start gap-space-md">
+<div class="flex flex-col items-center justify-center bg-surface-container-lowest px-2.5 py-1.5 rounded text-center shrink-0 min-w-[70px]">
+<span class="font-data-mono text-[11px] text-primary-fixed font-bold leading-tight">07:30 PM</span>
+<span class="font-label-caps text-[9px] text-outline uppercase tracking-wider">Meal 3</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-body-lg text-primary font-semibold">Restorative Wild Atlantic Salmon</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/15 font-label-caps text-[9px] text-secondary uppercase">Omega Rich</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                    200g wild Atlantic salmon fillet (pan-seared), expansive Hass avocado garden salad with raw apple cider vinaigrette, grilled yellow and green zucchini.
+                  </p>
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary">healing</span>
+                    High bioavailable EPA/DHA for muscle sheath and joint recovery.
+                  </span>
+</div>
+</div>
+<div class="flex flex-row md:flex-col items-end gap-1.5 shrink-0 self-end md:self-center">
+<span class="font-data-mono text-body-sm text-primary font-bold">440 kcal</span>
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 bg-primary-container/10 text-primary-fixed rounded font-data-mono text-[10px]">48g P</span>
+<span class="px-1.5 py-0.5 bg-secondary-container/10 text-secondary rounded font-data-mono text-[10px]">13g C</span>
+<span class="px-1.5 py-0.5 bg-surface-variant text-on-surface rounded font-data-mono text-[10px]">22g F</span>
+</div>
+</div>
+</div>
+<!-- Bedtime -->
+<div class="bg-surface-container hover:bg-surface-container-high transition-colors p-space-md rounded-lg flex flex-col md:flex-row gap-space-md justify-between items-start md:items-center">
+<div class="flex items-start gap-space-md">
+<div class="flex flex-col items-center justify-center bg-surface-container-lowest px-2.5 py-1.5 rounded text-center shrink-0 min-w-[70px]">
+<span class="font-data-mono text-[11px] text-on-surface-variant font-bold leading-tight">10:00 PM</span>
+<span class="font-label-caps text-[9px] text-outline uppercase tracking-wider">Night Regimen</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-body-lg text-primary font-semibold">Night Recovery Slow-Release Feed</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-variant font-label-caps text-[9px] text-tertiary-fixed-dim uppercase">Anti-Catabolic</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                    Micellar Casein cold suspension shake (1 scoop) or organic chamomile infusion with 500mg magnesium bisglycinate chelate.
+                  </p>
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-outline">bedtime</span>
+                    Promotes deep REM cycle sleep and steady overnight amino plasma release.
+                  </span>
+</div>
+</div>
+<div class="flex flex-row md:flex-col items-end gap-1.5 shrink-0 self-end md:self-center">
+<span class="font-data-mono text-body-sm text-primary font-bold">90 kcal</span>
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 bg-primary-container/10 text-primary-fixed rounded font-data-mono text-[10px]">20g P</span>
+<span class="px-1.5 py-0.5 bg-secondary-container/10 text-secondary rounded font-data-mono text-[10px]">0g C</span>
+<span class="px-1.5 py-0.5 bg-surface-variant text-on-surface rounded font-data-mono text-[10px]">1g F</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Meal Prep & Tactical Guidelines Visual Mosaic -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps uppercase text-secondary">Kitchen Lab Protocol</span>
+<h5 class="font-headline-sm text-headline-sm text-primary">High-Yield Batch Cooking Protocol</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Portion proteins on Sunday & Wednesday evenings into sealed vacuum glass lock containers. Maintain vegetable crispness through rapid ice-bath cooling after steaming.
+              </p>
+</div>
+<div class="flex items-center gap-space-sm pt-space-md">
+<span class="material-symbols-outlined text-primary-fixed text-base">check_box</span>
+<span class="font-body-sm text-body-sm text-on-surface">Digital Precision Scale Calibrated (1g precision)</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps uppercase text-primary-fixed">Physiological Rule</span>
+<h5 class="font-headline-sm text-headline-sm text-primary">Intermittent Window Compliance</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Fast begins strictly at 10:30 PM post-casein and breaks at 07:30 AM. Zero caloric intake during fasting hours; black single-origin coffee and unflavored electrolyte water permitted.
+              </p>
+</div>
+<div class="flex items-center gap-space-sm pt-space-md">
+<span class="material-symbols-outlined text-secondary text-base">timer</span>
+<span class="font-body-sm text-body-sm text-on-surface">9-Hour Focused Overnight Fast Matrix</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar Telemetry, Roster, Supplements & Macro Visualizer (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Macro Distribution Donut & Micronutrient Status -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h4 class="font-headline-sm text-headline-sm text-primary">Macro Calibration</h4>
+<span class="px-2 py-0.5 rounded-full bg-primary-container/10 text-primary-fixed font-data-mono text-[11px] font-bold">100% Calibrated</span>
+</div>
+<!-- Inline Telemetry Donut Visualizer -->
+<div class="flex items-center justify-center p-space-sm">
+<div class="relative w-44 h-44 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<!-- Track -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#1d2025" stroke-width="8"></circle>
+<!-- Protein (45%) Lime: C=251.3, dash=113 -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#c3f400" stroke-dasharray="113.1 251.3" stroke-dashoffset="0" stroke-linecap="round" stroke-width="8"></circle>
+<!-- Carbs (25%) Cyan: dash=62.8 -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#00eefc" stroke-dasharray="62.8 251.3" stroke-dashoffset="-115" stroke-linecap="round" stroke-width="8"></circle>
+<!-- Fat (30%) Neutral / Slate: dash=75.4 -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#8e9379" stroke-dasharray="75.4 251.3" stroke-dashoffset="-180" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="font-data-mono text-body-sm text-on-surface-variant uppercase text-[10px]">Net Energy</span>
+<span class="font-metric-md text-metric-md text-primary leading-tight">1,950</span>
+<span class="font-label-caps text-label-caps text-primary-fixed uppercase text-[9px]">kcal target</span>
+</div>
+</div>
+</div>
+<!-- Macro Breakdown Badges -->
+<div class="grid grid-cols-3 gap-space-xs text-center">
+<div class="bg-surface-container p-space-xs rounded-lg flex flex-col">
+<span class="font-label-caps text-[10px] text-primary-fixed uppercase">Protein</span>
+<span class="font-data-mono text-body-sm font-bold text-primary">210g (45%)</span>
+</div>
+<div class="bg-surface-container p-space-xs rounded-lg flex flex-col">
+<span class="font-label-caps text-[10px] text-secondary uppercase">Carbs</span>
+<span class="font-data-mono text-body-sm font-bold text-primary">120g (25%)</span>
+</div>
+<div class="bg-surface-container p-space-xs rounded-lg flex flex-col">
+<span class="font-label-caps text-[10px] text-outline uppercase">Fats</span>
+<span class="font-data-mono text-body-sm font-bold text-primary">65g (30%)</span>
+</div>
+</div>
+<!-- Essential Micronutrient Checklist -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<span class="font-label-caps text-label-caps uppercase text-outline">Critical Micronutrient Thresholds</span>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-fixed text-sm">check_circle</span>
+<span>Magnesium Bisglycinate</span>
+</span>
+<span class="font-data-mono text-primary text-xs">500mg / 100%</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-fixed text-sm">check_circle</span>
+<span>Zinc Picolinate</span>
+</span>
+<span class="font-data-mono text-primary text-xs">30mg / 100%</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span>Sodium-Potassium Balance</span>
+</span>
+<span class="font-data-mono text-secondary text-xs">3,200mg / 95%</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-fixed text-sm">check_circle</span>
+<span>Heme Iron Bioavailability</span>
+</span>
+<span class="font-data-mono text-primary text-xs">18mg / 100%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Ergogenic Aid & Supplement Protocol Widget -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-fixed text-lg">medication</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Ergogenic Stack</h4>
+</div>
+<span class="font-label-caps text-[10px] text-outline uppercase">Tier 1 Performance</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+<div>
+<span class="font-body-md text-body-sm text-primary font-semibold block leading-tight">Creatine Monohydrate</span>
+<span class="font-body-sm text-[11px] text-outline">Cellular ATP saturation • 5g Daily Post-Lift</span>
+</div>
+</div>
+<span class="font-label-caps text-[10px] text-primary-fixed uppercase font-semibold">Active</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<div>
+<span class="font-body-md text-body-sm text-primary font-semibold block leading-tight">Kinetic Pure Whey Isolate</span>
+<span class="font-body-sm text-[11px] text-outline">Rapid amino acid kinetics • 35g Pre-Lift</span>
+</div>
+</div>
+<span class="font-label-caps text-[10px] text-secondary uppercase font-semibold">Active</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-surface-variant"></span>
+<div>
+<span class="font-body-md text-body-sm text-primary font-semibold block leading-tight">Omega-3 Triple Strength</span>
+<span class="font-body-sm text-[11px] text-outline">1,200mg EPA / 900mg DHA with Dinner</span>
+</div>
+</div>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase font-semibold">Daily</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-surface-variant"></span>
+<div>
+<span class="font-body-md text-body-sm text-primary font-semibold block leading-tight">Vitamin D3 (5000 IU) + K2</span>
+<span class="font-body-sm text-[11px] text-outline">Hormonal & bone density baseline with Breakfast</span>
+</div>
+</div>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase font-semibold">Daily</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+<div>
+<span class="font-body-md text-body-sm text-primary font-semibold block leading-tight">Electrolyte Hydration Matrix</span>
+<span class="font-body-sm text-[11px] text-outline">1 Packet mixed in 1L cold training bottle</span>
+</div>
+</div>
+<span class="font-label-caps text-[10px] text-secondary-fixed uppercase font-semibold">In-Session</span>
+</div>
+</div>
+</div>
+<!-- Assigned Members Roster with Live Compliance Rates -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-caps text-[10px] uppercase text-outline">Deployment Group</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Assigned Athletes</h4>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-data-mono text-body-sm">312 Total</span>
+</div>
+<!-- Athletes List -->
+<div class="flex flex-col gap-space-xs">
+<!-- Member 1 -->
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center font-headline-sm text-body-sm text-primary font-bold">
+                  SC
+                </div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-sm text-primary font-semibold">Sarah Chen</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Active Day 18 • -3.2 kg cut</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
+<span class="font-data-mono text-body-sm text-primary-fixed font-bold">96%</span>
+</div>
+<span class="font-label-caps text-[9px] text-outline uppercase">Adherence</span>
+</div>
+</div>
+<!-- Member 2 -->
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center font-headline-sm text-body-sm text-primary font-bold">
+                  MR
+                </div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-sm text-primary font-semibold">Marcus Reed</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Active Day 32 • -4.8 kg cut</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-data-mono text-body-sm text-secondary font-bold">92%</span>
+</div>
+<span class="font-label-caps text-[9px] text-outline uppercase">Adherence</span>
+</div>
+</div>
+<!-- Member 3 -->
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center font-headline-sm text-body-sm text-primary font-bold">
+                  DM
+                </div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-sm text-primary font-semibold">Dave Miller</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Active Day 12 • -1.9 kg cut</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<span class="font-data-mono text-body-sm text-on-surface font-bold">88%</span>
+</div>
+<span class="font-label-caps text-[9px] text-outline uppercase">Adherence</span>
+</div>
+</div>
+<!-- Member 4 -->
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center font-headline-sm text-body-sm text-primary font-bold">
+                  EL
+                </div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-sm text-primary font-semibold">Elena Rostova</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Active Day 26 • -4.1 kg cut</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
+<span class="font-data-mono text-body-sm text-primary-fixed font-bold">94%</span>
+</div>
+<span class="font-label-caps text-[9px] text-outline uppercase">Adherence</span>
+</div>
+</div>
+</div>
+<!-- Bottom Action for Roster -->
+<div class="pt-space-xs flex flex-col gap-space-xs">
+<button class="w-full bg-surface-container-high hover:bg-surface-bright text-primary font-headline-sm text-body-sm font-semibold py-space-xs px-space-md rounded-lg flex items-center justify-center gap-space-xs transition-colors">
+<span class="material-symbols-outlined text-base text-primary-fixed">tune</span>
+<span>Update Diet Targets for Roster</span>
+</button>
+<button class="w-full text-outline hover:text-on-surface font-label-caps text-[10px] uppercase text-center transition-colors">
+              View All 312 Enrolled Athletes →
+            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Pill selection interaction
+    document.querySelectorAll('.filter-pill').forEach(pill => {
+      pill.addEventListener('click', function() {
+        document.querySelectorAll('.filter-pill').forEach(p => {
+          p.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_12px_rgba(195,244,0,0.25)]');
+          p.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+        });
+        this.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+        this.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_12px_rgba(195,244,0,0.25)]');
+      });
+    });
+
+    // Protocol card selection interaction
+    document.querySelectorAll('.protocol-card').forEach(card => {
+      card.addEventListener('click', function() {
+        document.querySelectorAll('.protocol-card').forEach(c => {
+          c.classList.remove('shadow-[0_0_20px_rgba(195,244,0,0.12)]', 'bg-surface-container');
+          c.classList.add('bg-surface-container-low');
+        });
+        this.classList.remove('bg-surface-container-low');
+        this.classList.add('bg-surface-container', 'shadow-[0_0_20px_rgba(195,244,0,0.12)]');
+      });
+    });
+  </script>
+</div></main></div></body></html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_blank" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-container": "#00686f", "surface-container-lowest": "#0b0e13", "primary": "#ffffff", "primary-fixed": "#c3f400", "on-primary-container": "#556d00", "on-secondary-fixed-variant": "#004f54", "tertiary-container": "#dde2f2", "surface-container-high": "#272a30", "inverse-primary": "#506600", "on-background": "#e1e2ea", "secondary-container": "#00eefc", "on-tertiary-container": "#5e6471", "on-primary": "#283500", "surface-container-highest": "#32353b", "surface-bright": "#36393f", "background": "#111319", "tertiary": "#ffffff", "surface-dim": "#111319", "outline": "#8e9379", "tertiary-fixed-dim": "#c1c6d5", "on-primary-fixed": "#161e00", "surface": "#111319", "surface-container-low": "#191c21", "on-primary-fixed-variant": "#3c4d00", "secondary-fixed": "#7df4ff", "on-secondary-fixed": "#002022", "surface-variant": "#32353b", "inverse-on-surface": "#2e3036", "on-secondary": "#00363a", "surface-container": "#1d2025", "outline-variant": "#444933", "on-surface-variant": "#c4c9ac", "primary-fixed-dim": "#abd600", "primary-container": "#c3f400", "on-surface": "#e1e2ea", "surface-tint": "#abd600", "on-error-container": "#ffdad6", "on-tertiary-fixed": "#161c26", "error-container": "#93000a", "tertiary-fixed": "#dde2f2", "on-tertiary-fixed-variant": "#414753", "on-error": "#690005", "inverse-surface": "#e1e2ea", "secondary": "#d3fbff", "secondary-fixed-dim": "#00dbe9", "error": "#ffb4ab", "on-tertiary": "#2b313c" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin-desktop": "2rem", "gutter": "1rem", "gutter-desktop": "1.5rem", "space-xxs": "0.125rem", "space-xs": "0.25rem", "margin": "1rem", "space-2xl": "3rem", "space-md": "1rem", "space-xl": "2rem", "space-lg": "1.5rem", "space-sm": "0.5rem" }, "fontFamily": { "body-sm": [ "Inter" ], "headline-sm": [ "Plus Jakarta Sans" ], "label-caps": [ "JetBrains Mono" ], "data-mono": [ "JetBrains Mono" ], "metric-xl": [ "Plus Jakarta Sans" ], "body-lg": [ "Inter" ], "headline-md": [ "Plus Jakarta Sans" ], "metric-md": [ "Plus Jakarta Sans" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ], "display-hero": [ "Plus Jakarta Sans" ], "body-md": [ "Inter" ], "headline-lg": [ "Plus Jakarta Sans" ], "display-hero-mobile": [ "Plus Jakarta Sans" ] }, "fontSize": { "body-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400" } ], "headline-sm": [ "18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" } ], "label-caps": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" } ], "data-mono": [ "13px", { "lineHeight": "16px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "metric-xl": [ "36px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "800" } ], "body-lg": [ "16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "headline-md": [ "22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "metric-md": [ "24px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-lg-mobile": [ "24px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "display-hero": [ "48px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" } ], "body-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" } ], "headline-lg": [ "30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "display-hero-mobile": [ "32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "800" } ] } } } };</script></head><body class="bg-surface-container-lowest text-on-surface font-body-md text-body-md min-h-screen flex flex-col justify-between selection:bg-primary-container selection:text-on-primary-container"><header class="w-full bg-surface-container-low/90 backdrop-blur-md px-margin-desktop py-space-sm flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs"><div class="w-7 h-7 bg-primary-container rounded flex items-center justify-center"><span class="material-symbols-outlined text-on-primary-container text-[18px]">bolt</span></div><span class="font-headline-sm text-headline-sm tracking-tight text-primary font-bold">KINETIC<span class="text-primary-container">FIT</span></span><span class="font-label-caps text-label-caps text-on-surface-variant uppercase px-space-xs py-space-xxs bg-surface-container rounded">OS ENGINE</span></div><div class="hidden md:flex items-center gap-space-xs pl-space-md"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-data-mono text-data-mono text-primary-container">NODE_01: ACTIVE</span><span class="font-data-mono text-data-mono text-on-surface-variant">[US-EAST-TX2]</span></div></div><div class="flex items-center gap-space-lg"><div class="hidden sm:flex items-center gap-space-xs text-on-surface-variant font-label-caps text-label-caps"><span class="material-symbols-outlined text-[16px] text-secondary-fixed-dim">lock</span><span>256-BIT TELEMETRY ENCRYPTED</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full flex-1 flex flex-col items-center justify-center px-margin py-space-xl bg-surface-container-lowest"><div class="flex flex-col w-full">
+<div class="w-full max-w-7xl mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm bg-surface-container-low p-space-md rounded-xl shadow-lg relative overflow-hidden">
+<div class="absolute -top-16 -right-16 w-48 h-48 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col gap-space-xxs z-10">
+<div class="flex items-center gap-space-xs font-label-caps text-label-caps text-primary-fixed-dim tracking-wider">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+<span class="text-primary-container font-semibold">TERMINAL ONLINE</span>
+<span class="text-on-surface-variant">//</span>
+<span class="text-on-surface-variant font-data-mono">NODE_TX2_FLAGSHIP</span>
+<span class="text-on-surface-variant">//</span>
+<span class="text-secondary-fixed-dim">TLS_1.3_ENCRYPTED</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary font-extrabold tracking-tight flex items-center gap-space-xs">
+          ATHLETE &amp; STAFF ACCESS PORTAL
+          <span class="font-label-caps text-label-caps bg-surface-container-highest text-secondary px-space-xs py-space-xxs rounded">KIOSK MODE</span>
+</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Dual-credential gateway for physical turnstile telemetry, biometric clearance, and training dashboard control.
+        </p>
+</div>
+<div class="flex items-center gap-space-md z-10">
+<div class="hidden sm:flex flex-col items-end text-right">
+<span class="font-label-caps text-label-caps text-on-surface-variant">GATEWAY LATENCY</span>
+<span class="font-data-mono text-data-mono text-primary-container font-bold">1.4ms (ZERO CHURN)</span>
+</div>
+<div class="h-8 w-px bg-surface-container-highest hidden sm:block"></div>
+<div class="flex items-center gap-space-xs bg-surface-container-highest/60 px-space-md py-space-xs rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[20px]">nfc</span>
+<span class="font-label-caps text-label-caps text-primary">NFC/RFID READY</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="bg-surface-container-low rounded-xl shadow-xl overflow-hidden flex flex-col">
+<div class="p-space-xs bg-surface-container-lowest grid grid-cols-2 gap-space-xs">
+<button class="flex items-center justify-center gap-space-xs py-space-sm px-space-md rounded font-label-caps text-label-caps tracking-wider transition-all bg-primary-container text-on-primary-container shadow-md font-bold cursor-pointer" id="tab-btn-login" onclick="switchAuthTab('login')">
+<span class="material-symbols-outlined text-[16px]">lock_open</span>
+<span>1. SIGN IN / LOGIN</span>
+</button>
+<button class="flex items-center justify-center gap-space-xs py-space-sm px-space-md rounded font-label-caps text-label-caps tracking-wider transition-all text-on-surface-variant hover:text-primary hover:bg-surface-container-high cursor-pointer" id="tab-btn-register" onclick="switchAuthTab('register')">
+<span class="material-symbols-outlined text-[16px]">person_add</span>
+<span>2. CREATE ACCOUNT / REGISTER</span>
+</button>
+</div>
+<div class="px-space-md py-space-xs bg-surface-container text-on-surface-variant font-body-sm text-body-sm flex items-center justify-between">
+<span class="flex items-center gap-space-xs" id="tab-helper-text">
+<span class="material-symbols-outlined text-[16px] text-primary-container">info</span>
+              Already registered? Authenticate with your primary Gmail address and password.
+            </span>
+<span class="font-data-mono text-label-caps text-outline uppercase hidden sm:inline">AUTH_V4_CORE</span>
+</div>
+<div class="p-space-lg flex flex-col gap-space-lg">
+<div class="flex flex-col gap-space-md" id="view-login">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase flex items-center justify-between">
+<span>Username / Primary Gmail Address</span>
+<span class="text-secondary-fixed-dim font-data-mono lowercase">verified@gmail.com required</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">mail</span>
+<input class="w-full bg-surface-container-lowest text-primary pl-10 pr-4 py-space-sm rounded font-body-md text-body-md focus:outline-none focus:bg-surface-container-high transition-colors" id="login-email" placeholder="athlete.name@gmail.com" type="email" value="alex.vance.athletic@gmail.com"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Access Password</label>
+<button class="text-outline hover:text-primary text-label-caps font-label-caps flex items-center gap-space-xxs cursor-pointer" onclick="togglePassVisibility('login-pass', 'pass-icon')" type="button">
+<span class="material-symbols-outlined text-[15px]" id="pass-icon">visibility</span>
+<span id="pass-toggle-label">SHOW</span>
+</button>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">key</span>
+<input class="w-full bg-surface-container-lowest text-primary pl-10 pr-10 py-space-sm rounded font-data-mono text-body-md focus:outline-none focus:bg-surface-container-high transition-colors" id="login-pass" placeholder="••••••••••••" type="password" value="KineticVolt#2025"/>
+<span class="material-symbols-outlined absolute right-3 text-primary-container text-[18px]">lock</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-xs pt-space-xxs">
+<label class="flex items-center gap-space-xs cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded bg-surface-container-lowest text-primary-container accent-primary-container cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Remember this terminal session (30 days)</span>
+</label>
+<a class="font-label-caps text-label-caps text-secondary-fixed-dim hover:text-secondary hover:underline transition-colors" href="javascript:void(0)" onclick="alert('Temporary reset payload dispatched to your primary Gmail address.')">
+                  FORGOT PASSCODE?
+                </a>
+</div>
+<button class="w-full bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-headline-sm text-headline-sm py-space-sm rounded flex items-center justify-center gap-space-xs shadow-lg transition-transform active:scale-[0.99] cursor-pointer" onclick="simulateAuthSuccess()" type="button">
+<span>Authenticate &amp; Enter Gym Portal</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<div class="hidden p-space-sm rounded bg-surface-container-highest text-primary-container font-body-sm text-body-sm items-center gap-space-xs" id="auth-alert">
+<span class="material-symbols-outlined text-[18px] text-primary-container animate-spin">sync</span>
+<span>Verifying 256-bit hash token against Downtown Node... Session Activated!</span>
+</div>
+<div class="relative flex items-center py-space-xs">
+<div class="flex-grow h-px bg-surface-container-highest"></div>
+<span class="flex-shrink mx-space-md font-label-caps text-label-caps text-on-surface-variant uppercase">OR RAPID PASS-THROUGH</span>
+<div class="flex-grow h-px bg-surface-container-highest"></div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<button class="flex items-center justify-center gap-space-xs py-space-sm px-space-md bg-surface-container hover:bg-surface-container-high rounded text-primary font-body-sm text-body-sm transition-colors cursor-pointer" onclick="simulateGoogleAuth()" type="button">
+<svg class="w-4 h-4" viewbox="0 0 24 24">
+<path d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.7 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.4 9 5 12 5z" fill="#EA4335"></path>
+<path d="M23.5 12.3c0-.8-.1-1.7-.2-2.3H12v4.6h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.9z" fill="#4285F4"></path>
+<path d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.8s.2-2.1.4-2.8L1.9 6.3C.7 8.7 0 10.3 0 12s.7 3.3 1.9 5.7l3.7-2.9z" fill="#FBBC05"></path>
+<path d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.4-6.4-5.2L1.9 16C3.7 19.7 7.5 23 12 23z" fill="#34A853"></path>
+</svg>
+<span>Google Workspace</span>
+</button>
+<button class="flex items-center justify-center gap-space-xs py-space-sm px-space-md bg-surface-container hover:bg-surface-container-high rounded text-secondary-fixed-dim font-body-sm text-body-sm transition-colors cursor-pointer" onclick="simulateKioskTap()" type="button">
+<span class="material-symbols-outlined text-[18px]">contactless</span>
+<span>Tap RFID / Apple GymKit</span>
+</button>
+</div>
+<div class="mt-space-xs p-space-sm rounded bg-surface-container-lowest flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>New athlete or coaching staff member?</span>
+<button class="text-primary-container font-label-caps text-label-caps font-bold hover:underline cursor-pointer" onclick="switchAuthTab('register')" type="button">
+                  CREATE CREDENTIALS →
+                </button>
+</div>
+</div>
+<div class="hidden flex flex-col gap-space-md" id="view-register">
+<div class="p-space-sm bg-surface-container-lowest rounded flex items-start gap-space-xs text-secondary">
+<span class="material-symbols-outlined text-[18px] flex-shrink-0 text-secondary-container">verified</span>
+<p class="font-body-sm text-body-sm">
+                  Your registered Gmail address will immediately bind to your RFID Turnstile Band, InBody Cloud Telemetry, and Kinetic Locker Hub.
+                </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-space-xxs">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Full Legal Name</label>
+<input class="w-full bg-surface-container-lowest text-primary px-space-sm py-space-sm rounded font-body-md text-body-md focus:outline-none focus:bg-surface-container-high" id="reg-name" placeholder="Jordan Hayes" type="text"/>
+</div>
+<div class="flex flex-col gap-space-xxs">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Contact Phone (SMS Auth)</label>
+<input class="w-full bg-surface-container-lowest text-primary px-space-sm py-space-sm rounded font-data-mono text-body-md focus:outline-none focus:bg-surface-container-high" id="reg-phone" placeholder="+1 (555) 019-2834" type="tel"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xxs">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase flex justify-between">
+<span>Registered Gmail Address</span>
+<span class="text-primary-container font-data-mono">RFID Sync Ready</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">alternate_email</span>
+<input class="w-full bg-surface-container-lowest text-primary pl-10 pr-4 py-space-sm rounded font-body-md text-body-md focus:outline-none focus:bg-surface-container-high" id="reg-email" placeholder="jordan.hayes@gmail.com" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-space-xxs">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Create Password</label>
+<input class="w-full bg-surface-container-lowest text-primary px-space-sm py-space-sm rounded font-data-mono text-body-md focus:outline-none focus:bg-surface-container-high" id="reg-pass" onkeyup="checkPasswordStrength(this.value)" placeholder="••••••••••••" type="password"/>
+</div>
+<div class="flex flex-col gap-space-xxs">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Confirm Password</label>
+<input class="w-full bg-surface-container-lowest text-primary px-space-sm py-space-sm rounded font-data-mono text-body-md focus:outline-none focus:bg-surface-container-high" id="reg-confirm" placeholder="••••••••••••" type="password"/>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container rounded grid grid-cols-3 gap-space-xs font-label-caps text-label-caps text-on-surface-variant">
+<div class="flex items-center gap-space-xxs text-outline" id="rule-len">
+<span class="material-symbols-outlined text-[14px]">radio_button_unchecked</span>
+<span>8+ Chars</span>
+</div>
+<div class="flex items-center gap-space-xxs text-outline" id="rule-num">
+<span class="material-symbols-outlined text-[14px]">radio_button_unchecked</span>
+<span>1+ Number</span>
+</div>
+<div class="flex items-center gap-space-xxs text-outline" id="rule-spec">
+<span class="material-symbols-outlined text-[14px]">radio_button_unchecked</span>
+<span>1+ Symbol</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xxs">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Select Facility Access Tier</label>
+<div class="grid grid-cols-3 gap-space-xs">
+<button class="tier-pill py-space-sm px-space-xs rounded bg-surface-container hover:bg-surface-container-high text-center font-label-caps text-label-caps cursor-pointer" onclick="selectTier(this, 'STANDARD')" type="button">
+<div class="text-primary font-bold">STANDARD</div>
+<div class="text-on-surface-variant font-data-mono text-body-sm">$129/mo</div>
+</button>
+<button class="tier-pill py-space-sm px-space-xs rounded bg-primary-container text-on-primary-container text-center font-label-caps text-label-caps shadow-md cursor-pointer" onclick="selectTier(this, 'PRO')" type="button">
+<div class="font-bold">PRO ATHLETE</div>
+<div class="font-data-mono text-body-sm">$199/mo</div>
+</button>
+<button class="tier-pill py-space-sm px-space-xs rounded bg-surface-container hover:bg-surface-container-high text-center font-label-caps text-label-caps cursor-pointer" onclick="selectTier(this, 'VIP')" type="button">
+<div class="text-secondary font-bold">BLACK VIP</div>
+<div class="text-secondary-fixed-dim font-data-mono text-body-sm">$289/mo</div>
+</button>
+</div>
+</div>
+<label class="flex items-start gap-space-xs cursor-pointer select-none">
+<input checked="" class="w-4 h-4 mt-0.5 rounded bg-surface-container-lowest text-primary-container accent-primary-container cursor-pointer" id="reg-terms" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+                  I accept the KineticFit Club Policies, Biometric Turnstile Agreement, and SOC2 Level II Telemetry Storage Terms.
+                </span>
+</label>
+<button class="w-full bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-headline-sm text-headline-sm py-space-sm rounded flex items-center justify-center gap-space-xs shadow-lg transition-transform active:scale-[0.99] cursor-pointer" onclick="handleRegistrationSubmit()" type="button">
+<span>Complete Registration &amp; Proceed to Login</span>
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+</button>
+<div class="text-center font-body-sm text-body-sm text-on-surface-variant">
+<span>Existing keyholder?</span>
+<button class="text-primary-container font-label-caps text-label-caps font-bold ml-1 hover:underline cursor-pointer" onclick="switchAuthTab('login')" type="button">
+                  RETURN TO SIGN IN
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-xl flex flex-col gap-space-md relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-primary uppercase font-bold tracking-wider">LIVE CLUB TELEMETRY</span>
+</div>
+<span class="font-data-mono text-label-caps text-primary-container bg-surface-container-highest px-space-xs py-space-xxs rounded">UPDATED 3s AGO</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-lowest p-space-sm rounded flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant font-label-caps text-label-caps">
+<span>OCCUPANCY</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">groups</span>
+</div>
+<div class="mt-space-xs flex items-baseline gap-space-xxs">
+<span class="font-metric-md text-metric-md text-primary font-black">222</span>
+<span class="font-data-mono text-data-mono text-on-surface-variant">/ 300</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-space-xs overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 74%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-primary-container mt-space-xxs font-semibold">74% CAPACITY (OPTIMAL)</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant font-label-caps text-label-caps">
+<span>ACTIVE TRAINERS</span>
+<span class="material-symbols-outlined text-[16px] text-primary-container">fitness_center</span>
+</div>
+<div class="mt-space-xs">
+<span class="font-metric-md text-metric-md text-primary font-black">8 ON-FLOOR</span>
+</div>
+<div class="flex items-center -space-x-1 mt-space-xs">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-caps text-label-caps font-bold">ER</div>
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-caps text-label-caps font-bold">JH</div>
+<div class="w-6 h-6 rounded-full bg-surface-container-highest text-primary flex items-center justify-center font-label-caps text-label-caps font-bold">+6</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-space-xxs">Elena R. &amp; Jaxson H. lead</span>
+</div>
+</div>
+<div class="bg-surface-container p-space-sm rounded flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim uppercase flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-[15px]">event_available</span>
+                NEXT UPCOMING SESSION
+              </span>
+<span class="font-data-mono text-label-caps text-error bg-error-container/20 px-space-xs py-space-xxs rounded">2 SPOTS REMAINING</span>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">18:00 METCON BLITZ</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Zone 4 Hypertrophy // Studio A (Dual Rig)</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-mono text-headline-sm text-primary-container font-extrabold">18:00</span>
+<span class="font-label-caps text-label-caps text-outline">STARTS IN 24M</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">INTEGRATED FACILITY ECOSYSTEM</span>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-xs">
+<div class="p-space-xs bg-surface-container-lowest rounded flex flex-col gap-space-xxs">
+<span class="material-symbols-outlined text-[18px] text-primary-container">monitor_heart</span>
+<span class="font-label-caps text-label-caps text-primary">INBODY SYNC</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">Dual-frequency scan linked to account</span>
+</div>
+<div class="p-space-xs bg-surface-container-lowest rounded flex flex-col gap-space-xxs">
+<span class="material-symbols-outlined text-[18px] text-secondary">nutrition</span>
+<span class="font-label-caps text-label-caps text-primary">MACRO HUD</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">Live nutrition telemetry pass-through</span>
+</div>
+<div class="p-space-xs bg-surface-container-lowest rounded flex flex-col gap-space-xxs">
+<span class="material-symbols-outlined text-[18px] text-primary">gate</span>
+<span class="font-label-caps text-label-caps text-primary">GATEWAY NFC</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">Under 0.2s turnstile unlock cycle</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-md flex items-center gap-space-md">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="High tech athletic conditioning gym facility interior with neon lime light strips, black iron racks, digital leaderboards, and elite athletes in deep dark training floor setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBXZVsvayJy7yjVRbA3BBxL2LdUH1zSBwUsThetetY0HQQkLLgSXXZH56d2Dj6hwCj2PgR1SYd23QzSFAkPxD1Vn0k4Z2Revk_tbV9LcSFV-iQSiPgYf3h4au5Gvo9hOQBEuBXVRgWv4uXwzx_YOjiffqpN_xuAZh14RQv18XtSyAO5DiUhFoWJLrpeuI_-burVhaOpcFwCU3uhYJofp7OULaQq47tXyLbe0How8ER"/>
+</div>
+<div class="flex flex-col gap-space-xxs min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-caps text-label-caps bg-primary-container text-on-primary-container font-bold px-space-xs py-space-xxs rounded">HQ ANNOUNCEMENT</span>
+<span class="font-data-mono text-label-caps text-on-surface-variant">TODAY</span>
+</div>
+<p class="font-body-sm text-body-sm text-primary font-medium truncate">New Olympic Lifting Platforms 05-08 Calibration Complete.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">RFID bands auto-log bar velocity on all upgraded stations.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded font-label-caps text-label-caps text-outline flex flex-col gap-space-xxs">
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-[14px] text-secondary">shield</span>
+              FACILITY ENGINE SECURE
+            </span>
+<span class="font-data-mono text-on-surface-variant">HW_TOKEN: 0x9AF8...D301</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">
+            KineticFit Enterprise v4.2 // HIPAA &amp; SOC2 Type II Certified Access Terminal // Downtown Flagship Campus.
+          </p>
+</div>
+</div>
+</div>
+</div>
+<script>
+    function switchAuthTab(tab) {
+      const loginView = document.getElementById('view-login');
+      const regView = document.getElementById('view-register');
+      const loginBtn = document.getElementById('tab-btn-login');
+      const regBtn = document.getElementById('tab-btn-register');
+      const helper = document.getElementById('tab-helper-text');
+
+      if (tab === 'login') {
+        loginView.classList.remove('hidden');
+        regView.classList.add('hidden');
+        loginBtn.className = 'flex items-center justify-center gap-space-xs py-space-sm px-space-md rounded font-label-caps text-label-caps tracking-wider transition-all bg-primary-container text-on-primary-container shadow-md font-bold cursor-pointer';
+        regBtn.className = 'flex items-center justify-center gap-space-xs py-space-sm px-space-md rounded font-label-caps text-label-caps tracking-wider transition-all text-on-surface-variant hover:text-primary hover:bg-surface-container-high cursor-pointer';
+        helper.innerHTML = '<span class="material-symbols-outlined text-[16px] text-primary-container">info</span> Already registered? Authenticate with your primary Gmail address and password.';
+      } else {
+        loginView.classList.add('hidden');
+        regView.classList.remove('hidden');
+        regBtn.className = 'flex items-center justify-center gap-space-xs py-space-sm px-space-md rounded font-label-caps text-label-caps tracking-wider transition-all bg-primary-container text-on-primary-container shadow-md font-bold cursor-pointer';
+        loginBtn.className = 'flex items-center justify-center gap-space-xs py-space-sm px-space-md rounded font-label-caps text-label-caps tracking-wider transition-all text-on-surface-variant hover:text-primary hover:bg-surface-container-high cursor-pointer';
+        helper.innerHTML = '<span class="material-symbols-outlined text-[16px] text-secondary">assignment_turned_in</span> New athlete profile registration. Create credentials to unlock physical turnstiles.';
+      }
+    }
+
+    function togglePassVisibility(inputId, iconId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById(iconId);
+      const label = document.getElementById('pass-toggle-label');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.innerText = 'visibility_off';
+        label.innerText = 'HIDE';
+      } else {
+        input.type = 'password';
+        icon.innerText = 'visibility';
+        label.innerText = 'SHOW';
+      }
+    }
+
+    function checkPasswordStrength(val) {
+      const rLen = document.getElementById('rule-len');
+      const rNum = document.getElementById('rule-num');
+      const rSpec = document.getElementById('rule-spec');
+
+      if (val.length >= 8) {
+        rLen.className = 'flex items-center gap-space-xxs text-primary-container font-semibold';
+        rLen.children[0].innerText = 'check_circle';
+      } else {
+        rLen.className = 'flex items-center gap-space-xxs text-outline';
+        rLen.children[0].innerText = 'radio_button_unchecked';
+      }
+
+      if (/\d/.test(val)) {
+        rNum.className = 'flex items-center gap-space-xxs text-primary-container font-semibold';
+        rNum.children[0].innerText = 'check_circle';
+      } else {
+        rNum.className = 'flex items-center gap-space-xxs text-outline';
+        rNum.children[0].innerText = 'radio_button_unchecked';
+      }
+
+      if (/[!@#$%^&*(),.?":{}|<>]/.test(val)) {
+        rSpec.className = 'flex items-center gap-space-xxs text-primary-container font-semibold';
+        rSpec.children[0].innerText = 'check_circle';
+      } else {
+        rSpec.className = 'flex items-center gap-space-xxs text-outline';
+        rSpec.children[0].innerText = 'radio_button_unchecked';
+      }
+    }
+
+    function selectTier(btn, tier) {
+      const pills = document.querySelectorAll('.tier-pill');
+      pills.forEach(p => {
+        p.className = 'tier-pill py-space-sm px-space-xs rounded bg-surface-container hover:bg-surface-container-high text-center font-label-caps text-label-caps cursor-pointer';
+        p.children[0].className = 'text-primary font-bold';
+        p.children[1].className = 'text-on-surface-variant font-data-mono text-body-sm';
+      });
+      btn.className = 'tier-pill py-space-sm px-space-xs rounded bg-primary-container text-on-primary-container text-center font-label-caps text-label-caps shadow-md cursor-pointer';
+      btn.children[0].className = 'font-bold text-on-primary-container';
+      btn.children[1].className = 'font-data-mono text-body-sm text-on-primary-container';
+    }
+
+    function simulateAuthSuccess() {
+      const alertBox = document.getElementById('auth-alert');
+      alertBox.classList.remove('hidden');
+      alertBox.classList.add('flex');
+      setTimeout(() => {
+        alertBox.innerHTML = '<span class="material-symbols-outlined text-[18px] text-primary-container">check_circle</span> <span class="font-bold text-primary">ACCESS GRANTED: Turnstile Gate 01 Unlocked. Welcome back, Alex.</span>';
+      }, 1200);
+    }
+
+    function simulateGoogleAuth() {
+      const emailInput = document.getElementById('login-email');
+      emailInput.value = 'authorized.workspace@gmail.com';
+      simulateAuthSuccess();
+    }
+
+    function simulateKioskTap() {
+      alert('RFID Antenna Activated. Hold keyfob, ring, or smartphone against the sensor pad.');
+    }
+
+    function handleRegistrationSubmit() {
+      const regEmail = document.getElementById('reg-email').value || 'new.athlete@gmail.com';
+      alert('Registration successful for ' + regEmail + '! Credentials active immediately. Redirecting to sign in...');
+      document.getElementById('login-email').value = regEmail;
+      switchAuthTab('login');
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low/80 backdrop-blur-sm px-margin-desktop py-space-md"><div class="w-full flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs font-label-caps text-label-caps text-on-surface-variant"><span class="material-symbols-outlined text-[15px] text-primary-container">verified_user</span><span>SOC2 TYPE II VERIFIED</span></div><div class="flex items-center gap-space-xs font-label-caps text-label-caps text-on-surface-variant"><span class="material-symbols-outlined text-[15px] text-secondary-container">memory</span><span>ISO/IEC 27001 ENGINE</span></div><div class="hidden lg:flex items-center gap-space-xs font-label-caps text-label-caps text-on-surface-variant"><span class="material-symbols-outlined text-[15px] text-on-surface-variant">speed</span><span>REALTIME 99.99% TELEMETRY SLA</span></div></div><div class="flex items-center gap-space-md font-label-caps text-label-caps text-on-surface-variant"><a class="hover:text-primary transition-colors" data-path="system-status" href="#">SYSTEM STATUS</a><span>/</span><a class="hover:text-primary transition-colors" data-path="privacy-compliance" href="#">TELEMETRY PRIVACY</a><span>/</span><a class="hover:text-primary transition-colors" data-path="support-desk" href="#">ATHLETE SUPPORT</a><span class="ml-space-md font-data-mono text-data-mono text-outline">BUILD 4.19.2-RC</span></div></div></footer></body></html>

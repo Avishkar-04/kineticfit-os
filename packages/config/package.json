@@ -1,0 +1,13 @@
+{
+  "name": "@kineticfit/config",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./index.js",
+  "exports": {
+    "./tailwind": "./tailwind.preset.js",
+    "./tsconfig.base.json": "./tsconfig.base.json"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@kineticfit/db",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "generate": "drizzle-kit generate",
+    "migrate": "node dist/migrate.js",
+    "seed": "node dist/seed/seed.js"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.39.3",
+    "pg": "^8.13.3",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@kineticfit/config": "workspace:*",
+    "@types/node": "^22.13.4",
+    "@types/pg": "^8.11.11",
+    "@types/uuid": "^10.0.0",
+    "drizzle-kit": "^0.30.4",
+    "typescript": "^5.8.2"
+  }
+}

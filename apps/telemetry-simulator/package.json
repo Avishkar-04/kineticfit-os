@@ -1,0 +1,25 @@
+{
+  "name": "@kineticfit/telemetry-simulator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/simulator.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/simulator.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo sim-lint-ok"
+  },
+  "dependencies": {
+    "@kineticfit/contracts": "workspace:*",
+    "@kineticfit/observability": "workspace:*",
+    "@kineticfit/resilience": "workspace:*",
+    "ws": "^8.18.1"
+  },
+  "devDependencies": {
+    "@kineticfit/config": "workspace:*",
+    "@types/node": "^22.13.4",
+    "@types/ws": "^8.5.14",
+    "typescript": "^5.8.2"
+  }
+}

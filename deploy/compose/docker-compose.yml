@@ -1,0 +1,189 @@
+version: '3.9'
+
+networks:
+  kf_network:
+    driver: bridge
+
+volumes:
+  pg_data:
+  redis_data:
+  rabbit_data:
+  minio_data:
+  grafana_data:
+
+services:
+  # =========================================================================
+  # CORE PROFILE: Relational Data, Cache, Message Broker, Object Store & Edge
+  # =========================================================================
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: kf_postgres
+    profiles: ["core", "full", "ha", "chaos"]
+    environment:
+      POSTGRES_USER: kinetic_admin
+      POSTGRES_PASSWORD: kinetic_secret
+      POSTGRES_DB: kineticfit
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kinetic_admin -d kineticfit"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - kf_network
+
+  pgbouncer:
+    image: edoburu/pgbouncer:v1.22.0
+    container_name: kf_pgbouncer
+    profiles: ["core", "full", "ha", "chaos"]
+    environment:
+      DB_USER: kinetic_app
+      DB_PASSWORD: kinetic_secret
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: kineticfit
+      POOL_MODE: transaction
+      MAX_CLIENT_CONN: 1000
+      DEFAULT_POOL_SIZE: 25
+    ports:
+      - "6432:6432"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - kf_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: kf_redis
+    profiles: ["core", "full", "ha", "chaos"]
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - kf_network
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: kf_rabbitmq
+    profiles: ["core", "full", "ha", "chaos"]
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbit_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    networks:
+      - kf_network
+
+  minio:
+    image: minio/minio:RELEASE.2024-02-26T09-33-48Z
+    container_name: kf_minio
+    profiles: ["core", "full", "ha", "chaos"]
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - kf_network
+
+  kong:
+    image: kong:3.7-alpine
+    container_name: kf_kong
+    profiles: ["core", "full", "ha", "chaos"]
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /kong/declarative/kong.yml
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+      KONG_PROXY_LISTEN: 0.0.0.0:8000
+    volumes:
+      - ../kong/kong.yml:/kong/declarative/kong.yml:ro
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+    networks:
+      - kf_network
+
+  nginx:
+    image: nginx:alpine
+    container_name: kf_nginx
+    profiles: ["core", "full", "ha", "chaos"]
+    volumes:
+      - ../nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80"
+    depends_on:
+      - kong
+    networks:
+      - kf_network
+
+  # =========================================================================
+  # FULL PROFILE: Observability (Prometheus, Grafana, Loki, Tempo, OTel)
+  # =========================================================================
+
+  prometheus:
+    image: prom/prometheus:v2.50.0
+    container_name: kf_prometheus
+    profiles: ["full"]
+    ports:
+      - "9090:9090"
+    networks:
+      - kf_network
+
+  grafana:
+    image: grafana/grafana:10.3.3
+    container_name: kf_grafana
+    profiles: ["full"]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - kf_network
+
+  # =========================================================================
+  # CHAOS PROFILE: Network Injection Proxy
+  # =========================================================================
+
+  toxiproxy:
+    image: ghcr.io/shopify/toxiproxy:2.7.0
+    container_name: kf_toxiproxy
+    profiles: ["chaos"]
+    ports:
+      - "8474:8474"
+    networks:
+      - kf_network
