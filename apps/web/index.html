@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KineticFit OS — Telemetry & Gym Operating System</title>
     <meta name="description" content="Production-grade athletic facility telemetry, capacity scheduling, chrono-nutritional protocols, and member operations." />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#c3f400" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,5 +17,12 @@
   <body class="bg-[#111319] text-[#e1e2ea] antialiased overflow-x-hidden selection:bg-[#c3f400] selection:text-[#111319]">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>

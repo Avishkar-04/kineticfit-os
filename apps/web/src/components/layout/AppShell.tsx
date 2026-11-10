@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { NavLink, Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard,
   Users,
@@ -16,7 +16,11 @@ import {
   ChevronDown,
   AlertTriangle,
   DoorClosed,
-  CheckCircle2
+  CheckCircle2,
+  BarChart3,
+  Building2,
+  ExternalLink,
+  Smartphone
 } from 'lucide-react';
 import { Logo } from '@kineticfit/ui';
 import { BadgeChip } from '@kineticfit/ui';
@@ -41,6 +45,9 @@ export const AppShell: React.FC = () => {
     { label: 'Trainers & Staff', path: '/staff', icon: ShieldCheck },
     { label: 'Financials & Billing', path: '/billing', icon: CreditCard },
     { label: 'Access & Check-ins', path: '/access', icon: Radio },
+    { label: 'Executive Reports', path: '/reports', icon: BarChart3 },
+    { label: 'Announcements', path: '/announcements', icon: Bell },
+    { label: 'Facilities & Assets', path: '/facilities', icon: Building2 },
     { label: 'System & Health', path: '/system', icon: Activity }
   ];
 
@@ -129,6 +136,23 @@ export const AppShell: React.FC = () => {
               );
             })}
           </nav>
+
+          {/* Quick Portal Switchers */}
+          <div className="px-3 py-2 border-t border-kf-border/40 font-mono text-[11px] space-y-1">
+            <div className="text-kf-text-steel/70 text-[9px] uppercase tracking-wider px-2 font-bold">PORTALS</div>
+            <Link to="/me" className="flex items-center justify-between px-2 py-1.5 rounded hover:bg-kf-surface-2 text-kf-text-steel hover:text-white transition-colors">
+              <span className="flex items-center gap-2"><Smartphone className="w-3.5 h-3.5 text-kf-lime" /> Member PWA</span>
+              <ExternalLink className="w-3 h-3 text-kf-text-steel/60" />
+            </Link>
+            <Link to="/coach" className="flex items-center justify-between px-2 py-1.5 rounded hover:bg-kf-surface-2 text-kf-text-steel hover:text-white transition-colors">
+              <span className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-kf-cyan" /> Coach Workspace</span>
+              <ExternalLink className="w-3 h-3 text-kf-text-steel/60" />
+            </Link>
+            <Link to="/kiosk" className="flex items-center justify-between px-2 py-1.5 rounded hover:bg-kf-surface-2 text-kf-text-steel hover:text-white transition-colors">
+              <span className="flex items-center gap-2"><Radio className="w-3.5 h-3.5 text-amber-400" /> Kiosk Terminal</span>
+              <ExternalLink className="w-3 h-3 text-kf-text-steel/60" />
+            </Link>
+          </div>
         </div>
 
         {/* Bottom Sidebar Telemetry Mini-Widget */}

@@ -1,0 +1,22 @@
+{
+  "name": "KineticFit OS • Athlete Performance System",
+  "short_name": "KineticFit",
+  "description": "Multi-branch gym operating system, rotating digital turnstile pass, and chrono-nutritional engine.",
+  "start_url": "/me",
+  "display": "standalone",
+  "background_color": "#111319",
+  "theme_color": "#c3f400",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

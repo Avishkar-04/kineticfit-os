@@ -12,6 +12,12 @@ import { BillingPage } from './pages/BillingPage.js';
 import { AccessPage } from './pages/AccessPage.js';
 import { SystemPage } from './pages/SystemPage.js';
 import { KioskPage } from './pages/KioskPage.js';
+import { LandingPage } from './pages/LandingPage.js';
+import { MemberPortalPage } from './pages/member/MemberPortalPage.js';
+import { CoachWorkspacePage } from './pages/coach/CoachWorkspacePage.js';
+import { ReportsPage } from './pages/ReportsPage.js';
+import { AnnouncementsPage } from './pages/AnnouncementsPage.js';
+import { FacilitiesPage } from './pages/FacilitiesPage.js';
 import { Button } from '@kineticfit/ui';
 
 const queryClient = new QueryClient({
@@ -44,21 +50,34 @@ export const App: React.FC = () => {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
+          {/* Public Landing Site */}
+          <Route path="/" element={<LandingPage />} />
+
           {/* Standalone Auth & Kiosk Routes */}
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/kiosk" element={<KioskPage />} />
 
-          {/* Authenticated Global App Shell */}
-          <Route path="/" element={<AppShell />}>
-            <Route index element={<Navigate to="/dashboard" replace />} />
-            <Route path="dashboard" element={<DashboardPage />} />
-            <Route path="members" element={<MembersPage />} />
-            <Route path="schedule" element={<SchedulePage />} />
-            <Route path="nutrition" element={<NutritionPage />} />
-            <Route path="staff" element={<StaffPage />} />
-            <Route path="billing" element={<BillingPage />} />
-            <Route path="access" element={<AccessPage />} />
-            <Route path="system" element={<SystemPage />} />
+          {/* Member Self-Service PWA Portal */}
+          <Route path="/me/*" element={<MemberPortalPage />} />
+          <Route path="/me" element={<MemberPortalPage />} />
+
+          {/* Trainer Workspace */}
+          <Route path="/coach/*" element={<CoachWorkspacePage />} />
+          <Route path="/coach" element={<CoachWorkspacePage />} />
+
+          {/* Authenticated Staff / Director App Shell */}
+          <Route element={<AppShell />}>
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/members" element={<MembersPage />} />
+            <Route path="/schedule" element={<SchedulePage />} />
+            <Route path="/nutrition" element={<NutritionPage />} />
+            <Route path="/staff" element={<StaffPage />} />
+            <Route path="/billing" element={<BillingPage />} />
+            <Route path="/access" element={<AccessPage />} />
+            <Route path="/reports" element={<ReportsPage />} />
+            <Route path="/announcements" element={<AnnouncementsPage />} />
+            <Route path="/facilities" element={<FacilitiesPage />} />
+            <Route path="/system" element={<SystemPage />} />
           </Route>
 
           {/* Catch-all on-brand 404 */}
