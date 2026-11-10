@@ -20,7 +20,8 @@ export class SSRFBlockedError extends Error {
  * - 192.168.0.0/16 (RFC 1918)
  * - 224.0.0.0/4 (Multicast)
  */
-export function isPrivateOrReservedIP(ip: string): boolean {
+export function isPrivateOrReservedIP(rawIp: string): boolean {
+  const ip = rawIp.replace(/^\[|\]$/g, '');
   if (ip === 'localhost' || ip === '::1') return true;
 
   // Handle IPv4
@@ -43,6 +44,38 @@ export function isPrivateOrReservedIP(ip: string): boolean {
   if (lower.startsWith('fe80:') || lower.startsWith('fc') || lower.startsWith('fd')) return true;
 
   return false;
+}
+
+export async function validateSsrfTarget(rawUrl: string): Promise<{ isAllowed: boolean; reason?: string }> {
+  try {
+    let parsed: URL;
+    try {
+      parsed = new URL(rawUrl);
+    } catch {
+      return { isAllowed: false, reason: 'Malformed URL' };
+    }
+
+    if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+      return { isAllowed: false, reason: `Protocol ${parsed.protocol} is forbidden` };
+    }
+
+    const rawHost = parsed.hostname;
+    const hostname = rawHost ? rawHost.replace(/^\[|\]$/g, '') : '';
+    if (!hostname || hostname.toLowerCase() === 'localhost') {
+      return { isAllowed: false, reason: 'Target is private or loopback address' };
+    }
+
+    if (isPrivateOrReservedIP(hostname)) {
+      if (hostname.startsWith('169.254')) {
+        return { isAllowed: false, reason: 'Target is link-local or metadata endpoint' };
+      }
+      return { isAllowed: false, reason: 'Target is private or loopback address' };
+    }
+
+    return { isAllowed: true };
+  } catch (err: any) {
+    return { isAllowed: false, reason: err.message };
+  }
 }
 
 export async function validateUrlForSSRF(rawUrl: string): Promise<{ resolvedIp: string; parsedUrl: URL }> {

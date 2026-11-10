@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "generate": "drizzle-kit generate",
     "migrate": "node dist/migrate.js",
-    "seed": "node dist/seed/seed.js"
+    "seed": "node dist/seed/seed.js",
+    "test": "vitest run"
   },
   "dependencies": {
     "drizzle-orm": "^0.39.3",
@@ -23,6 +24,7 @@
     "@types/pg": "^8.11.11",
     "@types/uuid": "^10.0.0",
     "drizzle-kit": "^0.30.4",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "vitest": "^5.1.0"
   }
 }

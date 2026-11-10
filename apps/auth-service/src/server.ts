@@ -54,6 +54,23 @@ export async function buildServer() {
     return tokenService.getJwks();
   });
 
+  // Current authenticated user verification endpoint
+  app.get('/v1/auth/me', async (req, reply) => {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      reply.status(401);
+      return { error: 'Missing or malformed Authorization header' };
+    }
+    const token = authHeader.substring(7);
+    try {
+      const payload = await tokenService.verifyAccessToken(token);
+      return { user: payload };
+    } catch (err: any) {
+      reply.status(401);
+      return { error: err.message };
+    }
+  });
+
   // Register
   app.post('/auth/register', async (req, reply) => {
     const body = req.body as any;

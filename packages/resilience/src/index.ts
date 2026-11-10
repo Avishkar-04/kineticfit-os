@@ -5,3 +5,5 @@ export * from './timeout.js';
 export * from './rate-limiter.js';
 export * from './idempotency.js';
 export * from './safe-fetch.js';
+export * from './leader-election.js';
+export * from './replica-router.js';
