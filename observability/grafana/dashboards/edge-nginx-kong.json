@@ -1,0 +1,96 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "title": "Kong Gateway Ingress Throughput",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "sum(rate(kong_http_requests_total[1m])) by (route)"
+        }
+      ],
+      "id": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "title": "Nginx Edge Upstream Latency",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "nginx_upstream_response_msec"
+        }
+      ],
+      "id": 2,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      }
+    },
+    {
+      "title": "Rate Limiting (429 Drops)",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "sum(rate(http_requests_total{status=\"429\"}[1m]))"
+        }
+      ],
+      "id": 3,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      }
+    },
+    {
+      "title": "WAF ModSecurity Rule Triggers",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "sum(rate(modsecurity_blocks_total[1m])) by (rule_id)"
+        }
+      ],
+      "id": 4,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      }
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "kineticfit",
+    "production"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Edge / Nginx & Kong Gateway",
+  "uid": "kf-edge-nginx-kong",
+  "version": 1
+}

@@ -1,0 +1,99 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "title": "API Availability (99.9% SLO Target)",
+      "type": "gauge",
+      "targets": [
+        {
+          "expr": "sum(rate(http_requests_total{status!~\"5..\"}[30d])) / sum(rate(http_requests_total[30d])) * 100"
+        }
+      ],
+      "id": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "title": "30-Day Error Budget Remaining (%)",
+      "type": "gauge",
+      "targets": [
+        {
+          "expr": "(1 - (sum(rate(http_requests_total{status=~\"5..\"}[30d])) / (sum(rate(http_requests_total[30d])) * 0.001))) * 100"
+        }
+      ],
+      "id": 2,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      }
+    },
+    {
+      "title": "Multi-Window Burn Rate (14.4x / 6x / 1x)",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "slo_burn_rate_1h"
+        },
+        {
+          "expr": "slo_burn_rate_6h"
+        }
+      ],
+      "id": 3,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      }
+    },
+    {
+      "title": "Check-in Decision Latency SLO (p99 < 150ms)",
+      "type": "gauge",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(checkin_decision_duration_ms_bucket[30d])) by (le))"
+        }
+      ],
+      "id": 4,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      }
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "kineticfit",
+    "production"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "SLO & Multi-Burn-Rate Error Budgets",
+  "uid": "kf-slo-error-budget",
+  "version": 1
+}

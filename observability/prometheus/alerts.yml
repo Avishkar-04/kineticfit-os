@@ -1,0 +1,96 @@
+groups:
+  - name: kineticfit-slo-burn-rate
+    rules:
+      - alert: ApiAvailabilityBurnRateHigh1h
+        expr: |
+          (
+            sum(rate(http_requests_total{status=~"5.."}[1h]))
+            /
+            sum(rate(http_requests_total[1h]))
+          ) > (14.4 * (1 - 0.999))
+          and
+          (
+            sum(rate(http_requests_total{status=~"5.."}[5m]))
+            /
+            sum(rate(http_requests_total[5m]))
+          ) > (14.4 * (1 - 0.999))
+        for: 2m
+        labels:
+          severity: SEV1
+        annotations:
+          summary: "API Availability SLO fast burn rate (14.4x over 1h/5m)"
+          description: "Consuming > 2% of 30-day error budget in 1 hour. Immediate page to on-call engineer."
+          runbook_url: "docs/runbooks/api-burn-rate-high.md"
+
+      - alert: ApiAvailabilityBurnRateHigh6h
+        expr: |
+          (
+            sum(rate(http_requests_total{status=~"5.."}[6h]))
+            /
+            sum(rate(http_requests_total[6h]))
+          ) > (6 * (1 - 0.999))
+          and
+          (
+            sum(rate(http_requests_total{status=~"5.."}[30m]))
+            /
+            sum(rate(http_requests_total[30m]))
+          ) > (6 * (1 - 0.999))
+        for: 15m
+        labels:
+          severity: SEV2
+        annotations:
+          summary: "API Availability SLO moderate burn rate (6x over 6h/30m)"
+          description: "Consuming > 5% of error budget in 6 hours."
+          runbook_url: "docs/runbooks/api-burn-rate-high.md"
+
+  - name: kineticfit-infrastructure-and-resilience
+    rules:
+      - alert: DeadLetterQueueDepthCritical
+        expr: rabbitmq_queue_messages_ready{queue=~".*dlq"} > 0
+        for: 5m
+        labels:
+          severity: SEV2
+        annotations:
+          summary: "Dead Letter Queue has unprocessed poisoned messages"
+          description: "Messages present in DLQ {{ $labels.queue }}. Requires inspection in System Page."
+          runbook_url: "docs/runbooks/dlq-depth-critical.md"
+
+      - alert: DatabaseReplicationLagHigh
+        expr: pg_stat_replication_reply_lag > 10
+        for: 3m
+        labels:
+          severity: SEV2
+        annotations:
+          summary: "PostgreSQL streaming replica lag exceeds 10 seconds"
+          description: "Standby replica is lagging behind primary by {{ $value }}s. Risk of stale reads."
+          runbook_url: "docs/runbooks/database-replication-lag.md"
+
+      - alert: CircuitBreakerOpenLongDuration
+        expr: circuit_breaker_state{state="OPEN"} == 1
+        for: 5m
+        labels:
+          severity: SEV2
+        annotations:
+          summary: "Circuit breaker has remained OPEN for > 5 minutes"
+          description: "Circuit breaker {{ $labels.name }} is failing fast. Downstream service unavailable."
+          runbook_url: "docs/runbooks/circuit-breaker-open.md"
+
+      - alert: CanaryAnalysisFailed
+        expr: argo_rollouts_canary_status{phase="Degraded"} == 1
+        for: 1m
+        labels:
+          severity: SEV2
+        annotations:
+          summary: "Argo Rollouts canary analysis failed and auto-aborted"
+          description: "Canary rollout {{ $labels.rollout }} failed automated Prometheus metric analysis."
+          runbook_url: "docs/runbooks/canary-analysis-failed.md"
+
+      - alert: TlsCertificateExpiringSoon
+        expr: (probe_ssl_earliest_cert_expiry - time()) / 86400 < 14
+        for: 1h
+        labels:
+          severity: SEV3
+        annotations:
+          summary: "TLS Certificate expiring in less than 14 days"
+          description: "Cert-manager renewal required for domain {{ $labels.instance }}."
+          runbook_url: "docs/runbooks/tls-cert-expiring.md"

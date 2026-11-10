@@ -1,0 +1,96 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "title": "Gym Floor Check-ins / Hour",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "sum(rate(gym_checkins_total[1h])) * 3600"
+        }
+      ],
+      "id": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "title": "Studio Class Bookings / Hour",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "sum(rate(class_bookings_total[1h])) * 3600"
+        }
+      ],
+      "id": 2,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      }
+    },
+    {
+      "title": "Payment Webhook Processing Success Rate (%)",
+      "type": "gauge",
+      "targets": [
+        {
+          "expr": "sum(rate(payment_webhooks_processed_total{status=\"SUCCESS\"}[1h])) / sum(rate(payment_webhooks_processed_total[1h])) * 100"
+        }
+      ],
+      "id": 3,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      }
+    },
+    {
+      "title": "Active Floor Occupancy by Hub",
+      "type": "barchart",
+      "targets": [
+        {
+          "expr": "gym_current_occupancy"
+        }
+      ],
+      "id": 4,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      }
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "kineticfit",
+    "production"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "KineticFit Business KPIs",
+  "uid": "kf-business-kpi",
+  "version": 1
+}

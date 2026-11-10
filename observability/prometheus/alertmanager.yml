@@ -1,0 +1,65 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ['alertname', 'service', 'severity']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  receiver: 'slack-default'
+  routes:
+    - match:
+        severity: SEV1
+      receiver: 'pagerduty-sev1-critical'
+      repeat_interval: 15m
+      continue: true
+    - match:
+        severity: SEV2
+      receiver: 'pagerduty-sev2-high'
+      repeat_interval: 1h
+    - match:
+        severity: SEV3
+      receiver: 'slack-reliability-channel'
+      repeat_interval: 6h
+    - match:
+        severity: SEV4
+      receiver: 'jira-low-priority'
+      repeat_interval: 24h
+
+inhibit_rules:
+  - source_match:
+      severity: 'SEV1'
+    target_match:
+      severity: 'SEV2'
+    equal: ['service', 'cluster']
+  - source_match:
+      severity: 'SEV2'
+    target_match:
+      severity: 'SEV3'
+    equal: ['service', 'cluster']
+
+receivers:
+  - name: 'pagerduty-sev1-critical'
+    webhook_configs:
+      - url: 'http://alertmanager-webhook-receiver.observability.svc.cluster.local:8080/pagerduty/sev1'
+        send_resolved: true
+
+  - name: 'pagerduty-sev2-high'
+    webhook_configs:
+      - url: 'http://alertmanager-webhook-receiver.observability.svc.cluster.local:8080/pagerduty/sev2'
+        send_resolved: true
+
+  - name: 'slack-reliability-channel'
+    webhook_configs:
+      - url: 'http://alertmanager-webhook-receiver.observability.svc.cluster.local:8080/slack/reliability'
+        send_resolved: true
+
+  - name: 'jira-low-priority'
+    webhook_configs:
+      - url: 'http://alertmanager-webhook-receiver.observability.svc.cluster.local:8080/jira/tickets'
+        send_resolved: false
+
+  - name: 'slack-default'
+    webhook_configs:
+      - url: 'http://alertmanager-webhook-receiver.observability.svc.cluster.local:8080/slack/default'
+        send_resolved: true
