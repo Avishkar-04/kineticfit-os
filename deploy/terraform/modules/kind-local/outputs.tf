@@ -7,3 +7,4 @@ output "kubeconfig_endpoint" {
   description = "Kubernetes API server endpoint"
   value       = kind_cluster.kineticfit_local.endpoint
 }
+

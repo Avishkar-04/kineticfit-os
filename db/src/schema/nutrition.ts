@@ -46,3 +46,4 @@ export const bodyAssessments = pgTable('body_assessments', {
   scannedAt: timestamp('scanned_at', { withTimezone: true }).notNull(),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull()
 });
+

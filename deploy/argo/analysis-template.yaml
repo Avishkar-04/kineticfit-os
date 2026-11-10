@@ -29,3 +29,4 @@ spec:
           address: http://prometheus-server.observability.svc.cluster.local:9090
           query: |
             histogram_quantile(0.99, sum(rate(http_request_duration_ms_bucket{service="scheduling-service"}[1m])) by (le))
+

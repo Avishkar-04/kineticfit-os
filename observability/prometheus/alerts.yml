@@ -94,3 +94,4 @@ groups:
           summary: "TLS Certificate expiring in less than 14 days"
           description: "Cert-manager renewal required for domain {{ $labels.instance }}."
           runbook_url: "docs/runbooks/tls-cert-expiring.md"
+

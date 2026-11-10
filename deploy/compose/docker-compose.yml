@@ -150,15 +150,30 @@ services:
       - kf_network
 
   # =========================================================================
-  # FULL PROFILE: Observability (Prometheus, Grafana, Loki, Tempo, OTel)
+  # FULL PROFILE: Observability & Support (Prometheus, Grafana, Alertmanager,
+  # Loki, Tempo, OTel Collector, Unleash Feature Flags, Mailhog)
   # =========================================================================
 
   prometheus:
     image: prom/prometheus:v2.50.0
     container_name: kf_prometheus
     profiles: ["full"]
+    volumes:
+      - ../../observability/prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - ../../observability/prometheus/rules.yml:/etc/prometheus/rules.yml:ro
     ports:
       - "9090:9090"
+    networks:
+      - kf_network
+
+  alertmanager:
+    image: prom/alertmanager:v0.27.0
+    container_name: kf_alertmanager
+    profiles: ["full"]
+    volumes:
+      - ../../observability/prometheus/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+    ports:
+      - "9093:9093"
     networks:
       - kf_network
 
@@ -172,11 +187,99 @@ services:
       - "3000:3000"
     volumes:
       - grafana_data:/var/lib/grafana
+      - ../../observability/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    networks:
+      - kf_network
+
+  loki:
+    image: grafana/loki:2.9.4
+    container_name: kf_loki
+    profiles: ["full"]
+    ports:
+      - "3100:3100"
+    networks:
+      - kf_network
+
+  tempo:
+    image: grafana/tempo:2.4.0
+    container_name: kf_tempo
+    profiles: ["full"]
+    ports:
+      - "3200:3200"
+      - "4317:4317"
+    networks:
+      - kf_network
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.96.0
+    container_name: kf_otel_collector
+    profiles: ["full"]
+    ports:
+      - "4318:4318"
+    networks:
+      - kf_network
+
+  unleash:
+    image: unleashorg/unleash-server:5.8.0
+    container_name: kf_unleash
+    profiles: ["full"]
+    environment:
+      DATABASE_URL: postgres://kinetic_admin:kinetic_secret@postgres:5432/kineticfit
+      DATABASE_SSL: "false"
+      INIT_CLIENT_API_TOKENS: "*:default.client-secret-token-2026"
+    ports:
+      - "4242:4242"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - kf_network
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    container_name: kf_mailhog
+    profiles: ["full"]
+    ports:
+      - "1025:1025"
+      - "8025:8025"
     networks:
       - kf_network
 
   # =========================================================================
-  # CHAOS PROFILE: Network Injection Proxy
+  # HA PROFILE: PostgreSQL Streaming Read Replica & Shard 2
+  # =========================================================================
+
+  postgres-replica:
+    image: postgres:16-alpine
+    container_name: kf_postgres_replica
+    profiles: ["ha"]
+    environment:
+      POSTGRES_USER: kinetic_admin
+      POSTGRES_PASSWORD: kinetic_secret
+      POSTGRES_DB: kineticfit
+    ports:
+      - "5433:5432"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - kf_network
+
+  postgres-shard2:
+    image: postgres:16-alpine
+    container_name: kf_postgres_shard2
+    profiles: ["ha"]
+    environment:
+      POSTGRES_USER: kinetic_admin
+      POSTGRES_PASSWORD: kinetic_secret
+      POSTGRES_DB: kineticfit_shard2
+    ports:
+      - "5434:5432"
+    networks:
+      - kf_network
+
+  # =========================================================================
+  # CHAOS PROFILE: Network Fault Injection Proxy (Toxiproxy)
   # =========================================================================
 
   toxiproxy:

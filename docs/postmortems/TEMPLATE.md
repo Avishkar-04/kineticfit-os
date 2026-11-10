@@ -59,3 +59,4 @@ Brief non-technical description of the incident, duration, and customer impact.
 |---|---|---|---|---|
 | Implement query-budget timeout | Preventative | Jane Doe | YYYY-MM-DD | KF-1042 |
 | Tune Alertmanager group_wait | Observability | John Smith | YYYY-MM-DD | KF-1043 |
+

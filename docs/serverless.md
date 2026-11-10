@@ -81,3 +81,4 @@ Measured using k6 benchmark harness (`load-test/pdf-export-bench.js`):
 | **CSV Export (2,000 rows)** | 8 ms | 15 ms | 470 ms |
 
 All warm responses comfortably fulfill the **p99 < 500 ms** read/export SLO defined in `docs/SLO.md`.
+

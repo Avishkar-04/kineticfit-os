@@ -55,3 +55,4 @@ Container sizing determined via 30-minute soak test baseline:
 | `scheduling-service` | 100m | 500m | 128Mi | 512Mi | 25 pods / m5.xlarge |
 | `web` (SPA) | 50m | 250m | 64Mi | 256Mi | 50 pods / m5.xlarge |
 | `fn-pdf-export` | 200m | 1000m | 256Mi | 1024Mi | On-demand container |
+

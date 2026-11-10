@@ -16,7 +16,9 @@
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "lint": "echo ui-lint-ok"
+    "lint": "echo ui-lint-ok",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "clsx": "^2.1.1",

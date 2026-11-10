@@ -45,3 +45,4 @@ Athletes viewing schedule or athlete roster may see stale read data (eventual co
 ## 5. Escalation Path
 - Primary Database Administrator (DBA)
 - Cloud Infrastructure On-Call
+

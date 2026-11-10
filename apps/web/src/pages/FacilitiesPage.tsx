@@ -292,3 +292,4 @@ export const FacilitiesPage: React.FC = () => {
     </div>
   );
 };
+

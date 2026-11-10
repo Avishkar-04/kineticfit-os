@@ -36,3 +36,4 @@ For production EKS clusters, `NodeLocal DNSCache` runs as a DaemonSet:
 - If CoreDNS pods flap during cluster upgrades:
   - Microservices maintain an internal DNS cache using Node.js `dns.setServers()` and connection keepalive pools.
   - Existing TCP connections to PostgreSQL and Redis remain established without re-resolution.
+

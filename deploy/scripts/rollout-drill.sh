@@ -27,3 +27,4 @@ echo "Promoting active preview service to production..."
 kubectl argo rollouts promote billing-service-rollout -n "$NAMESPACE"
 
 echo "=== Rollback & Canary Drill Completed Successfully ==="
+

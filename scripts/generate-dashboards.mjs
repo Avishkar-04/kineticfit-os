@@ -115,3 +115,4 @@ for (const [filename, content] of Object.entries(dashboards)) {
 }
 
 console.log('All 11 Grafana dashboards successfully created.');
+

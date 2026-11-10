@@ -20,3 +20,4 @@ Located at `deploy/kong/kong.yml`:
 - **Canary & Progressive Traffic Routing**: Dynamic percentage-based routing between stable and candidate upstream services during Argo Rollouts.
 - **CORS Handling**: Strict allowlist for frontend origins (`https://kineticfit.os`), rejecting wildcard credentials.
 - **Observability Instrumentation**: Injects OpenTelemetry `traceparent` headers for distributed tracing propagation.
+

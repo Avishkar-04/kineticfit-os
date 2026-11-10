@@ -8,3 +8,4 @@ export default defineConfig({
     url: process.env.DATABASE_DIRECT_URL || 'postgresql://kinetic_admin:kinetic_secret@localhost:5432/kineticfit?sslmode=disable'
   }
 });
+

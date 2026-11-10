@@ -39,3 +39,4 @@ KineticFit OS validates platform resilience under adverse network, process, and 
 | **P99 Read Latency** | 38 ms | 42 ms | 39 ms | &lt; 500 ms | **PASS** |
 | **P99 Check-in Latency** | 88 ms | 94 ms | 91 ms | &lt; 150 ms | **PASS** |
 | **Error Rate** | 0.00% | 0.00% | 0.00% | &lt; 0.1% | **PASS** |
+

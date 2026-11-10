@@ -63,3 +63,4 @@ spec:
         - name: tmp
           emptyDir:
             medium: Memory
+

@@ -13,3 +13,4 @@ data:
   REDIS_URL: {{ .Values.redis.url | quote }}
   RABBITMQ_URL: {{ .Values.rabbitmq.url | quote }}
   OTEL_EXPORTER_OTLP_ENDPOINT: {{ .Values.observability.otelExporterEndpoint | quote }}
+

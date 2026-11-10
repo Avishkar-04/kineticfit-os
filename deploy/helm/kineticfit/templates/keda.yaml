@@ -36,3 +36,4 @@ spec:
       authenticationRef:
         name: {{ include "kineticfit.fullname" . }}-rabbitmq-auth
 {{- end }}
+

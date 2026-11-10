@@ -48,3 +48,4 @@ export const auditLog = pgTable('audit_log', {
   hash: varchar('hash', { length: 64 }).notNull(), // SHA256 hash-chaining
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull()
 });
+

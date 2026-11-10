@@ -59,3 +59,4 @@ During a scheduled chaos engineering game-day drill, the primary PostgreSQL data
 |---|---|---|---|---|
 | Configure PgBouncer `server_fast_close = 1` | Resilience | Reliability Team | 2026-10-25 | KF-810 |
 | Add client-side Hedged Retry for 503 during failover window | Mitigative | Backend Core | 2026-10-28 | KF-811 |
+

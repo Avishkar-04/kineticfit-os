@@ -95,3 +95,4 @@ spec:
       targetPort: 3000
   selector:
     app.kubernetes.io/name: scheduling-service
+

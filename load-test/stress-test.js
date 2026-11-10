@@ -42,3 +42,4 @@ export default function () {
   stressErrors.add(res.status >= 500);
   sleep(0.1 + Math.random() * 0.2);
 }
+

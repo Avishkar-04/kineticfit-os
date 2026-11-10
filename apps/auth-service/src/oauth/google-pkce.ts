@@ -17,3 +17,4 @@ export function verifyPkce(verifier: string, expectedChallenge: string): boolean
   const calculated = generateCodeChallenge(verifier);
   return calculated === expectedChallenge;
 }
+

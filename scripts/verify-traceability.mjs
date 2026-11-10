@@ -43,3 +43,4 @@ for (const row of rows) {
 }
 
 console.log(`Verification completed. Missing paths count: ${missingCount}`);
+

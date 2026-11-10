@@ -45,3 +45,4 @@ To enable zero-downtime blue-green and canary rollouts:
 1. **Expand**: Add nullable columns or new tables in pre-deploy migration Job (`deploy/k8s/base/db-migration-job.yaml`).
 2. **Migrate**: Roll out new service code that reads from both old and new schema structures.
 3. **Contract**: After full promotion, run cleanup migrations removing deprecated columns.
+

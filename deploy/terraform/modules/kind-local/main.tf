@@ -144,3 +144,4 @@ resource "helm_release" "kineticfit" {
 
   depends_on = [helm_release.ingress_nginx, helm_release.argo_rollouts]
 }
+

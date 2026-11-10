@@ -20,3 +20,4 @@ Write-Host "5. Promoting Blue-Green billing-service..."
 kubectl argo rollouts promote billing-service-rollout -n $Namespace
 
 Write-Host "=== Progressive Delivery Drill Finished ===" -ForegroundColor Green
+

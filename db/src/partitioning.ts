@@ -79,3 +79,23 @@ export function generateDetachPartitionSql(
   const partitionName = `${tableName}_y${year}m${monthPad}`;
   return `ALTER TABLE ${tableName} DETACH PARTITION ${partitionName} CONCURRENTLY;`;
 }
+
+export async function createMonthlyPartitions(pool: { query: (sql: string) => Promise<any> }): Promise<void> {
+  const current = new Date();
+  const year = current.getUTCFullYear();
+  const month = current.getUTCMonth() + 1;
+
+  const partitions = [
+    ...generatePartitionsForRange('check_ins', year, month, 3),
+    ...generatePartitionsForRange('audit_log', year, month, 3)
+  ];
+
+  for (const p of partitions) {
+    await pool.query(p.createSql);
+    for (const idx of p.indexSql) {
+      await pool.query(idx);
+    }
+  }
+}
+
+

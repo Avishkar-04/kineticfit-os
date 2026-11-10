@@ -49,3 +49,4 @@ terraform validate
 ## Cost Optimization Notes
 - **EKS Spot Instances**: Worker node pool uses `capacity_type = "SPOT"` across diverse instance families (`t3.xlarge`, `m5.xlarge`, `c5.xlarge`) reducing compute costs by up to 70%.
 - **Aurora Serverless v2**: ACU scales dynamically between `0.5` and `16.0` ACUs based on gym traffic (low night baseline, peak at 18:00–19:00).
+

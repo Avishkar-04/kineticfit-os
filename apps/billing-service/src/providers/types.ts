@@ -48,3 +48,4 @@ export interface PaymentProvider {
   refund(params: RefundParams): Promise<RefundResult>;
   verifyWebhook(rawBody: string, signature: string, secret: string, headerTimestamp?: number): WebhookVerificationResult;
 }
+

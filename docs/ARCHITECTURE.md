@@ -81,3 +81,4 @@ KineticFit OS strictly avoids Two-Phase Commit (2PC) in favor of distributed cho
 - **Transactional Outbox**: State changes and event publications occur within the same PostgreSQL ACID transaction. A background publisher sweeps outbox rows and acknowledges RabbitMQ messages.
 - **Reverse Compensations**: If any downstream step fails (e.g. payment decline after member record created), compensation commands undo previous steps in reverse order.
 - **Dead Letter Queues**: Poisoned messages route to `*.dlq` with replay/discard controls on the in-app `/system` dashboard.
+

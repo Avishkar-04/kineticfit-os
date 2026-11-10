@@ -206,3 +206,4 @@ resource "aws_route53_health_check" "primary_gateway" {
   failure_threshold = "3"
   request_interval  = "10"
 }
+

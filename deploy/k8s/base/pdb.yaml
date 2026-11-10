@@ -74,3 +74,4 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: web
+

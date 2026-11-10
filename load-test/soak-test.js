@@ -59,3 +59,4 @@ export default function () {
   // Paced user think-time with randomized jitter
   sleep(1 + Math.random() * 2);
 }
+

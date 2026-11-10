@@ -8,7 +8,14 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "db:migrate": "pnpm --filter @kineticfit/db run migrate",
+    "db:seed": "pnpm --filter @kineticfit/db run seed"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",

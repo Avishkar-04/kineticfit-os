@@ -25,3 +25,4 @@ To reconcile AP domains and ensure eventual consistency:
   2. Resolves duplicate scans within 60 seconds (debounces accidental double-taps).
   3. Reconciles athlete monthly check-in credits.
   4. Generates an integrity checksum report exposed in the System page.
+

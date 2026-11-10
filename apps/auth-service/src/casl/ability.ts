@@ -65,3 +65,4 @@ export function defineAbilityFor(user: UserContext): AppAbility {
 
   return build();
 }
+

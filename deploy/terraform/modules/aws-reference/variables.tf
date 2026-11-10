@@ -22,3 +22,4 @@ variable "db_password" {
   sensitive   = true
   default     = "AuroraPostgresSuperSecretPassword2026!"
 }
+

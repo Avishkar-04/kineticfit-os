@@ -27,3 +27,4 @@ In Node.js microservices, standard HTTP agents destroy sockets after each reques
 - `maxSockets: 100` per host
 - `maxFreeSockets: 25`
 - `TCP_NODELAY: true` (disables Nagle's algorithm for low-latency command dispatch)
+

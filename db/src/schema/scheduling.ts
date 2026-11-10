@@ -47,3 +47,4 @@ export const waitlistEntries = pgTable('waitlist_entries', {
   promotedAt: timestamp('promoted_at', { withTimezone: true }),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull()
 });
+

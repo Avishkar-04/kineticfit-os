@@ -20,3 +20,4 @@ patches:
       - op: replace
         path: /data/LOG_LEVEL
         value: "debug"
+

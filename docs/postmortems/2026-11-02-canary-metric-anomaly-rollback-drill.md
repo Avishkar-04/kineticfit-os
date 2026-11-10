@@ -61,3 +61,4 @@ A game-day drill was performed to test the Argo Rollouts progressive delivery pi
 |---|---|---|---|---|
 | Tune AnalysisTemplate evaluation interval from 30s to 15s | Delivery | Release Team | 2026-11-10 | KF-950 |
 | Add synthetic k6 smoke probe before opening 5% canary step | Testing | QA Lead | 2026-11-15 | KF-951 |
+

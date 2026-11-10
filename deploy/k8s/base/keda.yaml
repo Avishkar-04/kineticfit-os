@@ -60,3 +60,4 @@ spec:
         value: "10"
       authenticationRef:
         name: rabbitmq-keda-auth
+

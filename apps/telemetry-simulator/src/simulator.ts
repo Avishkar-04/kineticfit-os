@@ -53,3 +53,4 @@ export function startSimulator(intervalMs: number = 3000) {
 if (process.argv[1]?.endsWith('simulator.js') || process.argv[1]?.endsWith('simulator.ts')) {
   startSimulator(3000);
 }
+

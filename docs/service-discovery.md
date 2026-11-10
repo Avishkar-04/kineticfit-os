@@ -53,3 +53,4 @@ gRPC connections utilize HTTP/2 persistent multiplexed TCP streams. A standard K
   3. Node.js process receives `SIGTERM`.
   4. Server calls `app.close()`, drains in-flight HTTP requests and WebSockets.
   5. Connection pools and Redis clients close cleanly within `terminationGracePeriodSeconds: 30`.
+

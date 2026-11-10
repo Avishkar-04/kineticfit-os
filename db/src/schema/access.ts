@@ -33,3 +33,4 @@ export const lockdownEvents = pgTable('lockdown_events', {
   engagedAt: timestamp('engaged_at', { withTimezone: true }).defaultNow().notNull(),
   releasedAt: timestamp('released_at', { withTimezone: true })
 });
+

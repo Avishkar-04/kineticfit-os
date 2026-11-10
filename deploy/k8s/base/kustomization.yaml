@@ -24,3 +24,4 @@ resources:
 commonLabels:
   app.kubernetes.io/part-of: kineticfit-os
   app.kubernetes.io/managed-by: kustomize
+

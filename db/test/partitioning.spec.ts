@@ -31,3 +31,4 @@ describe('PostgreSQL Range Partitioning', () => {
     expect(detachSql).toBe('ALTER TABLE check_ins DETACH PARTITION check_ins_y2025m10 CONCURRENTLY;');
   });
 });
+

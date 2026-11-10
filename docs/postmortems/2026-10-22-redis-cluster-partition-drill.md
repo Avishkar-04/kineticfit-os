@@ -62,3 +62,4 @@ A game-day drill was executed to simulate an isolated network partition between 
 |---|---|---|---|---|
 | Add Prometheus gauge for circuit breaker degraded fallback mode | Observability | Platform Team | 2026-10-30 | KF-902 |
 | Verify Redis client connection keepalive timeout tuning | Performance | Backend Core | 2026-11-05 | KF-903 |
+

@@ -17,3 +17,4 @@ data:
   RABBITMQ_URL: "amqp://kinetic_user:kinetic_secret@rabbitmq.kineticfit.svc.cluster.local:5672"
   OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel-collector.observability.svc.cluster.local:4318"
   UNLEASH_API_URL: "http://unleash.kineticfit.svc.cluster.local:4242/api/"
+

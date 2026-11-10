@@ -16,3 +16,4 @@ groups:
       - record: job:http_latency_p99:ms5m
         expr: |
           histogram_quantile(0.99, sum(rate(http_request_duration_ms_bucket[5m])) by (le, service))
+

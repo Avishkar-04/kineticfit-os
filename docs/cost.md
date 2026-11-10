@@ -45,3 +45,4 @@ Based on an organization operating 3 flagship hubs with 1,842 active members and
 ## 4. Non-Production Environment Shutdown Schedule
 
 Automated CronJob scales development and staging Kubernetes deployments to 0 replicas outside operational gym hours (22:00 to 05:00 local time), saving an additional \$85/month per non-production cluster.
+

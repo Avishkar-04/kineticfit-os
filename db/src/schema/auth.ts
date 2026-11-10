@@ -58,3 +58,4 @@ export const signingKeys = pgTable('signing_keys', {
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
   expiresAt: timestamp('expires_at', { withTimezone: true }).notNull()
 });
+

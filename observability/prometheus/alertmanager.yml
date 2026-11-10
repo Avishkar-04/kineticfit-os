@@ -63,3 +63,4 @@ receivers:
     webhook_configs:
       - url: 'http://alertmanager-webhook-receiver.observability.svc.cluster.local:8080/slack/default'
         send_resolved: true
+

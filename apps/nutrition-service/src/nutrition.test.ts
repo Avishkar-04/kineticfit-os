@@ -157,3 +157,4 @@ describe('Nutrition Service', () => {
     expect(body.trends.bmiDelta).toBe(-0.9);
   });
 });
+

@@ -29,3 +29,4 @@ node -e "
 
 echo "=== Automated Restore Verification Passed Successfully ==="
 exit 0
+

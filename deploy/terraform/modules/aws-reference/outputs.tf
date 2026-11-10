@@ -22,3 +22,4 @@ output "cloudfront_distribution_domain" {
   description = "CloudFront CDN domain name"
   value       = aws_cloudfront_distribution.cdn.domain_name
 }
+

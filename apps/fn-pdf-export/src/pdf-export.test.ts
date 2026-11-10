@@ -152,3 +152,4 @@ describe('PDF & CSV Export Function Service (fn-pdf-export)', () => {
     expect(body.csv).toContain('"VIP ""Gold"" athlete"');
   });
 });
+

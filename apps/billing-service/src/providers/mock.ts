@@ -93,3 +93,4 @@ export class MockPaymentProvider implements PaymentProvider {
     return { isValid: false, reason: 'Signature mismatch' };
   }
 }
+

@@ -38,3 +38,4 @@ For read-heavy, idempotent queries (e.g. member profile queries or class timetab
 2. If no response is received within the p95 latency threshold (50 ms), an identical duplicate request is sent to Replica 2.
 3. The faster response is consumed; the pending loser is cancelled via `AbortController`.
 4. This drops the p99.9 tail latency from 420 ms down to 88 ms under 1,500 VU load.
+

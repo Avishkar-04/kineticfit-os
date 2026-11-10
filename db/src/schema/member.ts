@@ -52,3 +52,4 @@ export const coverRequests = pgTable('cover_requests', {
   status: varchar('status', { length: 50 }).notNull().default('PENDING'),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull()
 });
+
