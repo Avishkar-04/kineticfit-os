@@ -1,0 +1,29 @@
+{
+  "name": "@kineticfit/fn-pdf-export",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo fn-pdf-lint-ok",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.1.0",
+    "@kineticfit/contracts": "workspace:*",
+    "@kineticfit/observability": "workspace:*",
+    "fastify": "^5.2.1",
+    "pdfkit": "^0.16.0",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@kineticfit/config": "workspace:*",
+    "@types/node": "^22.13.4",
+    "@types/pdfkit": "^0.13.9",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.7"
+  }
+}

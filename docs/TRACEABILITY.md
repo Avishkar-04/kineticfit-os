@@ -50,7 +50,7 @@ Levels:
 | 40 | Deadlocks | Consistent lock ordering + Postgres `40P01` retry logic | I | `packages/resilience/src/deadlock-retry.ts` |
 | 41 | Memory leaks | 30-minute k6 soak test asserting flat RSS slope | I/D | `load/soak-test.js` |
 | 42 | Garbage collection | V8 GC pause metrics, heap limits tuning runbook | I/C | `packages/observability/src/gc.ts` |
-| 43 | Thread safety | `worker_threads` for CPU-intensive PDF/CSV generation | I | `apps/fn-pdf-export/src/worker.ts` |
+| 43 | Thread safety | `worker_threads` / stateless container for CPU-intensive PDF/CSV generation | I | `apps/fn-pdf-export/src/pdf-generator.ts`, `apps/fn-pdf-export/src/pdf-export.test.ts` |
 | 44 | Backpressure | Bounded queues, WebSocket rate-coalescing, load shedding | I | `packages/resilience/src/backpressure.ts` |
 | 45 | Autoscaling | KEDA queue scaling + HPA CPU/RPS metrics | C/D | `deploy/k8s/hpa.yaml`, `deploy/k8s/keda.yaml` |
 | 46 | Horizontal scaling | Stateless service containers with shared Redis/Postgres | I/D | `deploy/compose/docker-compose.yml` |
