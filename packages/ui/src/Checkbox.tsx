@@ -4,22 +4,23 @@ import { Check } from 'lucide-react';
 
 export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
   label?: React.ReactNode;
+  description?: React.ReactNode;
 }
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, label, checked, onChange, disabled, id, ...props }, ref) => {
+  ({ className, label, description, checked, onChange, disabled, id, ...props }, ref) => {
     const inputId = id || React.useId();
 
     return (
       <label
         htmlFor={inputId}
         className={clsx(
-          'inline-flex items-center gap-2.5 cursor-pointer select-none text-sm text-kf-text',
+          'inline-flex items-start gap-2.5 cursor-pointer select-none text-sm text-kf-text',
           disabled && 'opacity-50 cursor-not-allowed',
           className
         )}
       >
-        <div className="relative flex items-center justify-center">
+        <div className="relative flex items-center justify-center pt-0.5">
           <input
             ref={ref}
             id={inputId}
@@ -41,7 +42,16 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             {checked && <Check className="w-3 h-3 stroke-[3]" />}
           </div>
         </div>
-        {label && <span className="font-body text-xs text-kf-text-muted leading-tight">{label}</span>}
+        {(label || description) && (
+          <div className="flex flex-col">
+            {label && <span className="font-body text-xs text-kf-text leading-tight">{label}</span>}
+            {description && (
+              <span className="font-body text-[11px] text-kf-text-steel leading-tight mt-0.5">
+                {description}
+              </span>
+            )}
+          </div>
+        )}
       </label>
     );
   }

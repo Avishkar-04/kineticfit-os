@@ -28,3 +28,4 @@ export async function runMigrations() {
 if (process.argv[1]?.endsWith('migrate.js') || process.argv[1]?.endsWith('migrate.ts')) {
   runMigrations();
 }
+

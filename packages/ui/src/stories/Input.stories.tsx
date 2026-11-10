@@ -37,3 +37,4 @@ export const WithError: Story = {
     leftIcon: <Search className="w-4 h-4 text-red-400" />
   }
 };
+

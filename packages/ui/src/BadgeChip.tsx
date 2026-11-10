@@ -1,7 +1,7 @@
 import React from 'react';
 import { clsx } from 'clsx';
 
-export type BadgeVariant = 'active' | 'cyan' | 'danger' | 'neutral';
+export type BadgeVariant = 'active' | 'cyan' | 'danger' | 'neutral' | 'expiring' | 'frozen';
 
 export interface BadgeChipProps {
   children: React.ReactNode;
@@ -20,14 +20,18 @@ export const BadgeChip: React.FC<BadgeChipProps> = ({
     active: 'bg-kf-lime/10 text-kf-lime border-kf-lime/30 shadow-[0_0_8px_rgba(195,244,0,0.15)]',
     cyan: 'bg-kf-cyan/10 text-kf-cyan border-kf-cyan/30 shadow-[0_0_8px_rgba(0,238,252,0.15)]',
     danger: 'bg-kf-danger/15 text-kf-danger border-kf-danger/30 shadow-[0_0_8px_rgba(255,180,171,0.15)]',
-    neutral: 'bg-kf-surface-3/40 text-kf-text-muted border-kf-border'
+    neutral: 'bg-kf-surface-3/40 text-kf-text-muted border-kf-border',
+    expiring: 'bg-amber-500/15 text-amber-400 border-amber-500/30 shadow-[0_0_8px_rgba(251,191,36,0.15)]',
+    frozen: 'bg-sky-500/15 text-sky-400 border-sky-500/30 shadow-[0_0_8px_rgba(56,189,248,0.15)]'
   };
 
   const dotColors = {
     active: 'bg-kf-lime',
     cyan: 'bg-kf-cyan',
     danger: 'bg-kf-danger',
-    neutral: 'bg-kf-text-steel'
+    neutral: 'bg-kf-text-steel',
+    expiring: 'bg-amber-400',
+    frozen: 'bg-sky-400'
   };
 
   return (

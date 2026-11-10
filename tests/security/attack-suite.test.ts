@@ -1,10 +1,9 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { validateSsrfTarget } from '../../packages/resilience/src/index.js';
 import { buildServer } from '../../apps/auth-service/src/server.js';
-import { FastifyInstance } from 'fastify';
 
 describe('Security Attack Suite (SQLi, XSS, SSRF, IDOR, CSRF, JWT)', () => {
-  let authApp: FastifyInstance;
+  let authApp: Awaited<ReturnType<typeof buildServer>>;
 
   beforeEach(async () => {
     authApp = await buildServer();

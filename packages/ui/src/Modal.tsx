@@ -7,6 +7,7 @@ export interface ModalProps {
   onClose: () => void;
   title: string;
   subtitle?: string;
+  description?: string;
   children: React.ReactNode;
   footer?: React.ReactNode;
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
@@ -17,11 +18,13 @@ export const Modal: React.FC<ModalProps> = ({
   onClose,
   title,
   subtitle,
+  description,
   children,
   footer,
   maxWidth = '2xl'
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const sub = subtitle || description;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -67,9 +70,9 @@ export const Modal: React.FC<ModalProps> = ({
         <div className="flex items-center justify-between px-6 py-4 border-b border-kf-border bg-kf-surface-lowest">
           <div>
             <h2 className="font-display font-bold text-lg text-white tracking-tight">{title}</h2>
-            {subtitle && (
+            {sub && (
               <p className="font-mono text-xs text-kf-text-steel tracking-wide mt-0.5">
-                {subtitle}
+                {sub}
               </p>
             )}
           </div>

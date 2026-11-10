@@ -12,11 +12,6 @@
     "db:migrate": "pnpm --filter @kineticfit/db run migrate",
     "db:seed": "pnpm --filter @kineticfit/db run seed"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
-  },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^26.6.5",

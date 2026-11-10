@@ -2,7 +2,8 @@ import React from 'react';
 import { clsx } from 'clsx';
 
 export interface ProgressRingProps {
-  value: number; // 0 to 100
+  value?: number; // 0 to 100
+  percentage?: number; // alias for value
   size?: number; // diameter in px
   strokeWidth?: number;
   color?: 'lime' | 'cyan' | 'danger';
@@ -13,6 +14,7 @@ export interface ProgressRingProps {
 
 export const ProgressRing: React.FC<ProgressRingProps> = ({
   value,
+  percentage,
   size = 120,
   strokeWidth = 6,
   color = 'lime',
@@ -20,7 +22,8 @@ export const ProgressRing: React.FC<ProgressRingProps> = ({
   sublabel,
   className
 }) => {
-  const clampedValue = Math.min(100, Math.max(0, value));
+  const actualValue = value ?? percentage ?? 0;
+  const clampedValue = Math.min(100, Math.max(0, actualValue));
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (clampedValue / 100) * circumference;

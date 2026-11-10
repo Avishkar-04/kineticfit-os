@@ -3,7 +3,6 @@ import {
   CircuitBreaker,
   CircuitState,
   CircuitBreakerOpenError,
-  ExponentialBackoff,
   SlidingWindowRateLimiter
 } from '../../packages/resilience/src/index.js';
 
@@ -160,12 +159,13 @@ describe('Toxiproxy Chaos & Fault Injection Suite', () => {
     expect(blockedRes.allowed).toBe(false);
 
     // Degraded mode: if Redis rate-limiter throws, fallback handler allows read
-    const checkRateLimitWithFallback = async (isRedisUp: boolean) => {
+    const checkRateLimitWithFallback = async (isRedisUp: boolean): Promise<{ allowed: boolean; degradedFallback?: boolean }> => {
       if (!isRedisUp) {
         // Fail-open for public read traffic
         return { allowed: true, degradedFallback: true };
       }
-      return rateLimiter.consume(ip);
+      const res = await rateLimiter.consume(ip);
+      return { allowed: res.allowed, degradedFallback: false };
     };
 
     const result = await checkRateLimitWithFallback(false);

@@ -40,3 +40,4 @@ export const CriticalSaturation: Story = {
     label: '95%'
   }
 };
+
