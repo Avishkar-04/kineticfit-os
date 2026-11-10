@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "kineticfit.fullname" . }}-config
+  labels:
+    {{- include "kineticfit.labels" . | nindent 4 }}
+data:
+  NODE_ENV: {{ .Values.global.environment | quote }}
+  LOG_LEVEL: {{ .Values.observability.logLevel | quote }}
+  POSTGRES_HOST: {{ .Values.database.host | quote }}
+  POSTGRES_PORT: {{ .Values.database.port | quote }}
+  POSTGRES_DB: {{ .Values.database.name | quote }}
+  REDIS_URL: {{ .Values.redis.url | quote }}
+  RABBITMQ_URL: {{ .Values.rabbitmq.url | quote }}
+  OTEL_EXPORTER_OTLP_ENDPOINT: {{ .Values.observability.otelExporterEndpoint | quote }}

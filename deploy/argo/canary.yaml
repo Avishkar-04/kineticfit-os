@@ -1,0 +1,97 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: scheduling-service-rollout
+  namespace: kineticfit
+  labels:
+    app.kubernetes.io/name: scheduling-service
+    app.kubernetes.io/part-of: kineticfit-os
+spec:
+  replicas: 4
+  strategy:
+    canary:
+      canaryService: scheduling-service-canary
+      stableService: scheduling-service
+      trafficRouting:
+        nginx:
+          stableIngress: kineticfit-ingress
+      analysis:
+        templates:
+          - templateName: kineticfit-success-rate-p99
+        args:
+          - name: service-name
+            value: scheduling-service
+      steps:
+        # Step 1: 5% traffic canary
+        - setWeight: 5
+        - pause: { duration: 2m }
+        # Step 2: 25% traffic canary
+        - setWeight: 25
+        - pause: { duration: 5m }
+        # Step 3: 50% traffic canary
+        - setWeight: 50
+        - pause: { duration: 5m }
+        # Step 4: 100% traffic full promotion
+        - setWeight: 100
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: scheduling-service
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: scheduling-service
+        app.kubernetes.io/part-of: kineticfit-os
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: scheduling-service
+          image: ghcr.io/kineticfit/scheduling-service:v1.0.0
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - name: http
+              containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: kineticfit-config
+            - secretRef:
+                name: kineticfit-secrets
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: http
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scheduling-service-canary
+  namespace: kineticfit
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 3003
+      targetPort: 3000
+  selector:
+    app.kubernetes.io/name: scheduling-service

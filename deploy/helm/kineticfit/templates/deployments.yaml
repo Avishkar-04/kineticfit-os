@@ -1,0 +1,92 @@
+{{- range $key, $service := .Values.services }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $service.name }}
+  labels:
+    app.kubernetes.io/name: {{ $service.name }}
+    app.kubernetes.io/part-of: kineticfit-os
+    app.kubernetes.io/component: {{ if eq $key "web" }}frontend{{ else }}microservice{{ end }}
+spec:
+  replicas: {{ $service.replicas }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ $service.name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ $service.name }}
+        app.kubernetes.io/part-of: kineticfit-os
+    spec:
+      serviceAccountName: {{ include "kineticfit.serviceAccountName" $ }}
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: {{ if eq $key "web" }}101{{ else }}10001{{ end }}
+        runAsGroup: {{ if eq $key "web" }}101{{ else }}10001{{ end }}
+        fsGroup: {{ if eq $key "web" }}101{{ else }}10001{{ end }}
+        seccompProfile:
+          type: RuntimeDefault
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: {{ $service.name }}
+          image: "{{ $.Values.global.imageRegistry }}/{{ $service.name }}:{{ $.Values.global.imageTag | default $.Chart.AppVersion }}"
+          imagePullPolicy: {{ $.Values.global.imagePullPolicy }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: {{ if eq $key "web" }}false{{ else }}true{{ end }}
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - name: http
+              containerPort: {{ $service.targetPort }}
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: {{ include "kineticfit.fullname" $ }}-config
+            - secretRef:
+                name: {{ include "kineticfit.fullname" $ }}-secrets
+          resources:
+            {{- toYaml $service.resources | nindent 12 }}
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: {{ if eq $key "web" }}/health/live{{ else }}/health/ready{{ end }}
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 2
+          {{- if ne $key "web" }}
+          startupProbe:
+            httpGet:
+              path: /health/startup
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 10
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+          {{- end }}
+      {{- if ne $key "web" }}
+      volumes:
+        - name: tmp
+          emptyDir:
+            medium: Memory
+      {{- end }}
+{{- end }}

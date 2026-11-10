@@ -1,0 +1,85 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kineticfit-ingress
+  namespace: kineticfit
+  labels:
+    app.kubernetes.io/name: kineticfit-ingress
+    app.kubernetes.io/part-of: kineticfit-os
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
+    nginx.ingress.kubernetes.io/enable-modsecurity: "true"
+    nginx.ingress.kubernetes.io/modsecurity-snippet: |
+      SecRuleEngine On
+      SecRequestBodyAccess On
+      SecRule ARGS "@detectSQLi" "id:1001,phase:2,deny,status:403,msg:'SQLi Attack Detected'"
+      SecRule ARGS "@detectXSS" "id:1002,phase:2,deny,status:403,msg:'XSS Attack Detected'"
+    nginx.ingress.kubernetes.io/limit-rps: "100"
+    nginx.ingress.kubernetes.io/limit-burst-multiplier: "3"
+spec:
+  tls:
+    - hosts:
+        - kineticfit.os
+        - api.kineticfit.os
+      secretName: kineticfit-tls
+  rules:
+    - host: kineticfit.os
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web
+                port:
+                  number: 80
+    - host: api.kineticfit.os
+      http:
+        paths:
+          - path: /v1/auth
+            pathType: Prefix
+            backend:
+              service:
+                name: auth-service
+                port:
+                  number: 3001
+          - path: /v1/members
+            pathType: Prefix
+            backend:
+              service:
+                name: member-service
+                port:
+                  number: 3002
+          - path: /v1/classes
+            pathType: Prefix
+            backend:
+              service:
+                name: scheduling-service
+                port:
+                  number: 3003
+          - path: /v1/access
+            pathType: Prefix
+            backend:
+              service:
+                name: access-service
+                port:
+                  number: 3004
+          - path: /v1/nutrition
+            pathType: Prefix
+            backend:
+              service:
+                name: nutrition-service
+                port:
+                  number: 3005
+          - path: /v1/billing
+            pathType: Prefix
+            backend:
+              service:
+                name: billing-service
+                port:
+                  number: 3006

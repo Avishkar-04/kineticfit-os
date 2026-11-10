@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kineticfit-config
+  namespace: kineticfit
+  labels:
+    app.kubernetes.io/name: kineticfit
+    app.kubernetes.io/part-of: kineticfit-os
+data:
+  NODE_ENV: "production"
+  PORT: "3000"
+  LOG_LEVEL: "info"
+  POSTGRES_HOST: "postgres-primary.kineticfit.svc.cluster.local"
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: "kineticfit"
+  REDIS_URL: "redis://redis-master.kineticfit.svc.cluster.local:6379"
+  RABBITMQ_URL: "amqp://kinetic_user:kinetic_secret@rabbitmq.kineticfit.svc.cluster.local:5672"
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel-collector.observability.svc.cluster.local:4318"
+  UNLEASH_API_URL: "http://unleash.kineticfit.svc.cluster.local:4242/api/"

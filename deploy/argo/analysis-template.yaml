@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: kineticfit-success-rate-p99
+  namespace: kineticfit
+  labels:
+    app.kubernetes.io/part-of: kineticfit-os
+spec:
+  metrics:
+    - name: success-rate
+      interval: 30s
+      count: 3
+      successCondition: result[0] >= 0.99
+      failureLimit: 1
+      provider:
+        prometheus:
+          address: http://prometheus-server.observability.svc.cluster.local:9090
+          query: |
+            sum(rate(http_requests_total{service="scheduling-service", status!~"5.*"}[1m]))
+            /
+            sum(rate(http_requests_total{service="scheduling-service"}[1m]))
+    - name: p99-latency
+      interval: 30s
+      count: 3
+      successCondition: result[0] < 500
+      failureLimit: 1
+      provider:
+        prometheus:
+          address: http://prometheus-server.observability.svc.cluster.local:9090
+          query: |
+            histogram_quantile(0.99, sum(rate(http_request_duration_ms_bucket{service="scheduling-service"}[1m])) by (le))

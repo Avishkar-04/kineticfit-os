@@ -1,0 +1,62 @@
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: rabbitmq-keda-auth
+  namespace: kineticfit
+spec:
+  secretTargetRef:
+    - parameter: host
+      name: kineticfit-config
+      key: RABBITMQ_URL
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: scheduling-worker-keda-scaler
+  namespace: kineticfit
+  labels:
+    app.kubernetes.io/name: scheduling-service
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: scheduling-service
+  pollingInterval: 15
+  cooldownPeriod: 120
+  minReplicaCount: 2
+  maxReplicaCount: 10
+  triggers:
+    - type: rabbitmq
+      metadata:
+        protocol: amqp
+        queueName: kf.booking.queue
+        mode: QueueLength
+        value: "20"
+      authenticationRef:
+        name: rabbitmq-keda-auth
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: billing-worker-keda-scaler
+  namespace: kineticfit
+  labels:
+    app.kubernetes.io/name: billing-service
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: billing-service
+  pollingInterval: 15
+  cooldownPeriod: 120
+  minReplicaCount: 1
+  maxReplicaCount: 6
+  triggers:
+    - type: rabbitmq
+      metadata:
+        protocol: amqp
+        queueName: kf.billing.queue
+        mode: QueueLength
+        value: "10"
+      authenticationRef:
+        name: rabbitmq-keda-auth

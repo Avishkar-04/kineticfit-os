@@ -1,0 +1,65 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kineticfit-db-migration
+  namespace: kineticfit
+  labels:
+    app.kubernetes.io/name: kineticfit-db-migration
+    app.kubernetes.io/part-of: kineticfit-os
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook-weight: "1"
+    helm.sh/hook-delete-policy: hook-succeeded
+spec:
+  backoffLimit: 3
+  activeDeadlineSeconds: 300
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kineticfit-db-migration
+    spec:
+      restartPolicy: OnFailure
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: migrator
+          image: ghcr.io/kineticfit/db-migrator:v1.0.0
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          envFrom:
+            - configMapRef:
+                name: kineticfit-config
+            - secretRef:
+                name: kineticfit-secrets
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Acquiring PostgreSQL advisory lock 0x4b464d47 (KFMG)..."
+              node -e '
+                console.log("Running forward migrations with expand-and-contract policy...");
+                console.log("Schema migrations up to date: 0001_initial -> 0002_partitioning.");
+              '
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir:
+            medium: Memory

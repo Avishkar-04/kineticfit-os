@@ -1,0 +1,38 @@
+{{- if .Values.keda.enabled -}}
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: {{ include "kineticfit.fullname" . }}-rabbitmq-auth
+  labels:
+    {{- include "kineticfit.labels" . | nindent 4 }}
+spec:
+  secretTargetRef:
+    - parameter: host
+      name: {{ include "kineticfit.fullname" . }}-config
+      key: RABBITMQ_URL
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: {{ include "kineticfit.fullname" . }}-scheduling-scaler
+  labels:
+    {{- include "kineticfit.labels" . | nindent 4 }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: scheduling-service
+  pollingInterval: {{ .Values.keda.pollingInterval }}
+  cooldownPeriod: {{ .Values.keda.cooldownPeriod }}
+  minReplicaCount: 2
+  maxReplicaCount: 10
+  triggers:
+    - type: rabbitmq
+      metadata:
+        protocol: amqp
+        queueName: kf.booking.queue
+        mode: QueueLength
+        value: "20"
+      authenticationRef:
+        name: {{ include "kineticfit.fullname" . }}-rabbitmq-auth
+{{- end }}

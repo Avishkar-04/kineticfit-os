@@ -1,0 +1,115 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: kineticfit
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-dns-egress
+  namespace: kineticfit
+spec:
+  podSelector: {}
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - namespaceSelector: {}
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-to-services
+  namespace: kineticfit
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/part-of: kineticfit-os
+  policyTypes:
+    - Ingress
+  ingress:
+    # Allow traffic from Ingress controller namespace
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ingress-nginx
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: ingress-nginx
+      ports:
+        - protocol: TCP
+          port: 8080
+        - protocol: TCP
+          port: 3000
+    # Allow inter-service communication within kineticfit namespace
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/part-of: kineticfit-os
+      ports:
+        - protocol: TCP
+          port: 3000
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress-to-datastores
+  namespace: kineticfit
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/component: microservice
+  policyTypes:
+    - Egress
+  egress:
+    # Postgres
+    - ports:
+        - protocol: TCP
+          port: 5432
+        - protocol: TCP
+          port: 6432
+    # Redis
+    - ports:
+        - protocol: TCP
+          port: 6379
+    # RabbitMQ
+    - ports:
+        - protocol: TCP
+          port: 5672
+    # OTel Collector
+    - ports:
+        - protocol: TCP
+          port: 4317
+        - protocol: TCP
+          port: 4318
+    # Inter-service calls
+    - to:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/part-of: kineticfit-os
+      ports:
+        - protocol: TCP
+          port: 3000
+        - protocol: TCP
+          port: 3001
+        - protocol: TCP
+          port: 3002
+        - protocol: TCP
+          port: 3003
+        - protocol: TCP
+          port: 3004
+        - protocol: TCP
+          port: 3005
+        - protocol: TCP
+          port: 3006

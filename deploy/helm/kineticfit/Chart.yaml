@@ -1,0 +1,15 @@
+apiVersion: v2
+name: kineticfit
+description: Production-grade multi-branch gym management & telemetry operating system Helm Chart
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - gym-management
+  - telemetry
+  - iot
+  - sports-science
+home: https://kineticfit.os
+maintainers:
+  - name: KineticFit DevOps
+    email: ops@kineticfit.os

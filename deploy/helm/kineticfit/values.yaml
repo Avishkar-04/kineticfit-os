@@ -1,0 +1,194 @@
+global:
+  environment: production
+  domain: kineticfit.os
+  imageRegistry: ghcr.io/kineticfit
+  imagePullPolicy: IfNotPresent
+
+serviceAccount:
+  create: true
+  name: kineticfit-sa
+  annotations: {}
+
+security:
+  podSecurityContext:
+    runAsNonRoot: true
+    runAsUser: 10001
+    runAsGroup: 10001
+    fsGroup: 10001
+    seccompProfile:
+      type: RuntimeDefault
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+    capabilities:
+      drop:
+        - ALL
+
+database:
+  host: postgres-primary.kineticfit.svc.cluster.local
+  port: 5432
+  name: kineticfit
+  user: kinetic_app
+  password: "kinetic_super_secure_production_password_2026!"
+  poolMode: transaction
+  maxConnections: 100
+
+redis:
+  url: redis://redis-master.kineticfit.svc.cluster.local:6379
+
+rabbitmq:
+  url: amqp://kinetic_user:kinetic_secret@rabbitmq.kineticfit.svc.cluster.local:5672
+
+observability:
+  logLevel: info
+  otelExporterEndpoint: http://otel-collector.observability.svc.cluster.local:4318
+
+services:
+  auth:
+    name: auth-service
+    port: 3001
+    targetPort: 3000
+    replicas: 2
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+  member:
+    name: member-service
+    port: 3002
+    targetPort: 3000
+    replicas: 2
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+  scheduling:
+    name: scheduling-service
+    port: 3003
+    targetPort: 3000
+    replicas: 2
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+  access:
+    name: access-service
+    port: 3004
+    targetPort: 3000
+    replicas: 2
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+  nutrition:
+    name: nutrition-service
+    port: 3005
+    targetPort: 3000
+    replicas: 2
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+  billing:
+    name: billing-service
+    port: 3006
+    targetPort: 3000
+    replicas: 2
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+  web:
+    name: web
+    port: 80
+    targetPort: 8080
+    replicas: 2
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 8
+  targetCPUUtilizationPercentage: 65
+
+keda:
+  enabled: true
+  cooldownPeriod: 120
+  pollingInterval: 15
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/enable-modsecurity: "true"
+  hosts:
+    - host: kineticfit.os
+      paths:
+        - path: /
+          pathType: Prefix
+          service: web
+          port: 80
+    - host: api.kineticfit.os
+      paths:
+        - path: /v1/auth
+          pathType: Prefix
+          service: auth-service
+          port: 3001
+        - path: /v1/members
+          pathType: Prefix
+          service: member-service
+          port: 3002
+        - path: /v1/classes
+          pathType: Prefix
+          service: scheduling-service
+          port: 3003
+        - path: /v1/access
+          pathType: Prefix
+          service: access-service
+          port: 3004
+        - path: /v1/nutrition
+          pathType: Prefix
+          service: nutrition-service
+          port: 3005
+        - path: /v1/billing
+          pathType: Prefix
+          service: billing-service
+          port: 3006
+  tls:
+    - secretName: kineticfit-tls
+      hosts:
+        - kineticfit.os
+        - api.kineticfit.os
+
+pdb:
+  enabled: true
+  minAvailable: 1
+
+networkPolicy:
+  enabled: true
