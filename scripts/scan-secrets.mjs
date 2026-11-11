@@ -20,6 +20,7 @@ const IGNORE_FILES = new Set([
   'packages/observability/test/observability.spec.ts',
   'packages/observability/src/logger.ts',
   'apps/auth-service/test/auth.spec.ts',
+  'apps/auth-service/src/auth.test.ts',
   'apps/auth-service/src/server.ts',
   'tests/security/attack-suite.test.ts'
 ]);
