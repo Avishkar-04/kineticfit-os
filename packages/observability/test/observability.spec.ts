@@ -31,6 +31,27 @@ describe('Observability Suite', () => {
       expect(redacted.meta.token).toBe('[REDACTED]');
       expect(redacted.meta.publicId).toBe('KF-1001');
     });
+
+    it('should redact api_keys, client secrets, bearer tokens and private keys', () => {
+      const sensitiveData = {
+        api_key: 'live_test_api_key_12345',
+        apiKey: 'secret_key_abc',
+        client_secret: 'whsec_stripe_test',
+        headers: {
+          authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test.sig',
+          customHeader: 'safe_value'
+        },
+        rawKey: '-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASC\n-----END PRIVATE KEY-----'
+      };
+
+      const redacted: any = redactObject(sensitiveData);
+      expect(redacted.api_key).toBe('[REDACTED]');
+      expect(redacted.apiKey).toBe('[REDACTED]');
+      expect(redacted.client_secret).toBe('[REDACTED]');
+      expect(redacted.headers.authorization).toBe('[REDACTED]');
+      expect(redacted.headers.customHeader).toBe('safe_value');
+      expect(redacted.rawKey).toBe('[REDACTED]');
+    });
   });
 
   describe('Prometheus Metrics', () => {

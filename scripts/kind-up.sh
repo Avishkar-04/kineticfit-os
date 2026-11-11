@@ -33,3 +33,4 @@ echo "==> Applying Ingress NGINX controller..."
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml || true
 
 echo "==> Kind cluster ${CLUSTER_NAME} ready for KineticFit OS!"
+

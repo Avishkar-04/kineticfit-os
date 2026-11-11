@@ -9,6 +9,7 @@
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
+    "security:scan": "node scripts/scan-secrets.mjs",
     "db:migrate": "pnpm --filter @kineticfit/db run migrate",
     "db:seed": "pnpm --filter @kineticfit/db run seed"
   },

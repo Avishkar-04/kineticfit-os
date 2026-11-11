@@ -29,7 +29,7 @@ database:
   port: 5432
   name: kineticfit
   user: kinetic_app
-  password: "kinetic_super_secure_production_password_2026!"
+  password: "CHANGE_ME_IN_PRODUCTION_VIA_SECRET"
   poolMode: transaction
   maxConnections: 100
 
@@ -37,7 +37,7 @@ redis:
   url: redis://redis-master.kineticfit.svc.cluster.local:6379
 
 rabbitmq:
-  url: amqp://kinetic_user:kinetic_secret@rabbitmq.kineticfit.svc.cluster.local:5672
+  url: amqp://kinetic_user:CHANGE_ME_VIA_SECRET@rabbitmq.kineticfit.svc.cluster.local:5672
 
 observability:
   logLevel: info

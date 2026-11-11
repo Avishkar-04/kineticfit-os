@@ -1,3 +1,39 @@
+# Environment variables & secrets
+.env*
+!.env.example
+*.secret
+*secret*.json
+*credentials*.json
+credentials.json
+client_secret*.json
+service-account*.json
+token.json
+tokens.json
+*.token
+*.pat
+
+# Private keys, certificates & credentials
+*.pem
+*.key
+*.pkcs12
+*.pfx
+*.p12
+*.crt
+*.cert
+*.keystore
+id_rsa*
+id_ed25519*
+id_ecdsa*
+id_dsa*
+
+# Cloud & Vault credentials
+.aws/
+.gcp/
+.azure/
+.vault/
+.secrets/
+
+# Dependencies & Build artifacts
 node_modules
 .pnpm-store
 dist
@@ -7,10 +43,6 @@ build
 .cache
 coverage
 *.log
-.env
-.env.local
-.env.*.local
-!.env.example
 .DS_Store
 Thumbs.db
 *.tsbuildinfo

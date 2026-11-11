@@ -12,20 +12,57 @@ export interface LogContext {
 
 const REDACT_KEYS = new Set([
   'password',
+  'passphrase',
+  'passwd',
   'secret',
+  'clientsecret',
+  'webhooksecret',
   'token',
-  'authorization',
+  'accesstoken',
   'refreshtoken',
+  'idtoken',
+  'bearertoken',
+  'authorization',
+  'authheader',
   'pin',
   'keycardpin',
   'cvv',
   'creditcard',
-  'apikey'
+  'cardnumber',
+  'apikey',
+  'privatekey',
+  'signingkey',
+  'cookie',
+  'setcookie'
 ]);
+
+function isSensitiveKey(key: string): boolean {
+  const normalized = key.toLowerCase().replace(/[-_]/g, '');
+  if (REDACT_KEYS.has(normalized)) return true;
+  for (const sensitive of REDACT_KEYS) {
+    if (normalized.includes(sensitive)) return true;
+  }
+  return false;
+}
+
+function redactValue(val: unknown): unknown {
+  if (typeof val === 'string') {
+    if (/^bearer\s+[a-z0-9-_]+\.[a-z0-9-_]+\.[a-z0-9-_]+/i.test(val)) {
+      return '[REDACTED]';
+    }
+    if (/-----BEGIN [A-Z ]*PRIVATE KEY-----/.test(val)) {
+      return '[REDACTED]';
+    }
+    if (/^(sk_live_|sk_test_|ghp_|gho_|xoxb-|xoxp-|AIzaSy)[a-zA-Z0-9_-]+/.test(val)) {
+      return '[REDACTED]';
+    }
+  }
+  return val;
+}
 
 export function redactObject(obj: unknown): unknown {
   if (obj === null || typeof obj !== 'object') {
-    return obj;
+    return redactValue(obj);
   }
 
   if (Array.isArray(obj)) {
@@ -34,13 +71,12 @@ export function redactObject(obj: unknown): unknown {
 
   const result: Record<string, unknown> = {};
   for (const [key, val] of Object.entries(obj as Record<string, unknown>)) {
-    const lowerKey = key.toLowerCase();
-    if (REDACT_KEYS.has(lowerKey)) {
+    if (isSensitiveKey(key)) {
       result[key] = '[REDACTED]';
     } else if (typeof val === 'object' && val !== null) {
       result[key] = redactObject(val);
     } else {
-      result[key] = val;
+      result[key] = redactValue(val);
     }
   }
   return result;

@@ -43,3 +43,4 @@ try {
 }
 
 Write-Host "==> Kind cluster '$ClusterName' ready for KineticFit deployment!" -ForegroundColor Green
+
