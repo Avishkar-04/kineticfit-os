@@ -14,6 +14,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
+      id,
       type = 'text',
       label,
       error,
@@ -26,13 +27,18 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const [showPassword, setShowPassword] = useState(false);
+    const generatedId = React.useId();
+    const inputId = id || generatedId;
 
     const resolvedType = isPassword ? (showPassword ? 'text' : 'password') : type;
 
     return (
       <div className="w-full flex flex-col gap-1.5 text-left">
         {label && (
-          <label className="font-mono text-xs font-semibold tracking-wider uppercase text-kf-text-steel flex items-center justify-between">
+          <label
+            htmlFor={inputId}
+            className="font-mono text-xs font-semibold tracking-wider uppercase text-kf-text-steel flex items-center justify-between"
+          >
             <span>{label}</span>
           </label>
         )}
@@ -46,6 +52,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
           <input
             ref={ref}
+            id={inputId}
             type={resolvedType}
             disabled={disabled}
             className={clsx(
@@ -64,9 +71,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {isPassword && (
             <button
               type="button"
-              tabIndex={-1}
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 text-kf-text-steel hover:text-white transition-colors focus:outline-none"
+              className="absolute right-3 text-kf-text-steel hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-kf-lime rounded"
             >
               {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
             </button>

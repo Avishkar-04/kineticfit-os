@@ -13,10 +13,11 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <label
-        htmlFor={inputId}
+        htmlFor={disabled ? undefined : inputId}
+        onClick={disabled ? (e) => e.preventDefault() : undefined}
         className={clsx(
-          'inline-flex items-start gap-2.5 cursor-pointer select-none text-sm text-kf-text',
-          disabled && 'opacity-50 cursor-not-allowed',
+          'inline-flex items-start gap-2.5 select-none text-sm text-kf-text',
+          disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer',
           className
         )}
       >
@@ -26,7 +27,10 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             id={inputId}
             type="checkbox"
             checked={checked}
-            onChange={onChange}
+            onChange={(e) => {
+              if (disabled) return;
+              onChange?.(e);
+            }}
             disabled={disabled}
             className="sr-only"
             {...props}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Radio, CheckCircle2, XCircle, ArrowLeft, Zap, ShieldCheck } from 'lucide-react';
 import { Logo, Button } from '@kineticfit/ui';
@@ -12,10 +12,19 @@ export const KioskPage: React.FC = () => {
     tier?: string;
     message: string;
   } | null>(null);
+  const resetTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (resetTimerRef.current) clearTimeout(resetTimerRef.current);
+    };
+  }, []);
 
   const handleScan = (e: React.FormEvent) => {
     e.preventDefault();
     if (!rfidInput.trim()) return;
+
+    if (resetTimerRef.current) clearTimeout(resetTimerRef.current);
 
     if (rfidInput.toLowerCase().includes('denied') || rfidInput.includes('9999')) {
       setScanResult({
@@ -32,7 +41,7 @@ export const KioskPage: React.FC = () => {
     }
 
     // Auto-reset in 3s per specification
-    setTimeout(() => {
+    resetTimerRef.current = setTimeout(() => {
       setScanResult(null);
       setRfidInput('');
     }, 3000);

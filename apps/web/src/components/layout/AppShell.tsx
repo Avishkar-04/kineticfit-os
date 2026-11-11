@@ -236,8 +236,17 @@ export const AppShell: React.FC = () => {
             {/* User Profile Block (Triggers Settings Modal) */}
             <div
               onClick={() => setIsSettingsOpen(true)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setIsSettingsOpen(true);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label="Open Settings & Terminal Security"
               title="Open Settings & Terminal Security"
-              className="flex items-center gap-2.5 pl-3 border-l border-kf-border cursor-pointer hover:opacity-85 transition-opacity"
+              className="flex items-center gap-2.5 pl-3 border-l border-kf-border cursor-pointer hover:opacity-85 transition-opacity focus:outline-none focus:ring-1 focus:ring-kf-lime rounded"
             >
               <div className="w-8 h-8 rounded bg-kf-lime/20 border border-kf-lime/40 text-kf-lime font-mono font-bold text-xs flex items-center justify-center">
                 MV

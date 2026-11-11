@@ -99,7 +99,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
           <button
             onClick={onClose}
-            className="text-kf-text-steel hover:text-white p-2 rounded-lg hover:bg-kf-surface-2 transition-colors focus:outline-none"
+            aria-label="Close settings"
+            className="text-kf-text-steel hover:text-white p-2 rounded-lg hover:bg-kf-surface-2 transition-colors focus:outline-none focus:ring-1 focus:ring-kf-lime"
           >
             <X className="w-5 h-5" />
           </button>

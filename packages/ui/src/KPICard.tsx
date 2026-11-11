@@ -28,9 +28,22 @@ export const KPICard: React.FC<KPICardProps> = ({
   return (
     <div
       onClick={onClick}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={
+        onClick
+          ? (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onClick();
+              }
+            }
+          : undefined
+      }
       className={clsx(
         'bg-kf-surface-1 border border-kf-border rounded-lg p-4 flex flex-col justify-between transition-all duration-150',
-        onClick && 'cursor-pointer hover:bg-kf-surface-2 hover:border-slate-600 active:scale-[0.99]',
+        onClick &&
+          'cursor-pointer hover:bg-kf-surface-2 hover:border-slate-600 active:scale-[0.99] focus:outline-none focus:ring-1 focus:ring-kf-lime',
         className
       )}
     >

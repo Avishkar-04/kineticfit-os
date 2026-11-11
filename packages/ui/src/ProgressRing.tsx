@@ -22,9 +22,12 @@ export const ProgressRing: React.FC<ProgressRingProps> = ({
   sublabel,
   className
 }) => {
-  const actualValue = value ?? percentage ?? 0;
+  const rawValue = value ?? percentage ?? 0;
+  const actualValue = Number.isFinite(rawValue) ? rawValue : 0;
   const clampedValue = Math.min(100, Math.max(0, actualValue));
-  const radius = (size - strokeWidth) / 2;
+  const safeSize = Math.max(16, size);
+  const safeStroke = Math.max(1, strokeWidth);
+  const radius = Math.max(1, (safeSize - safeStroke) / 2);
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (clampedValue / 100) * circumference;
 
@@ -36,23 +39,23 @@ export const ProgressRing: React.FC<ProgressRingProps> = ({
 
   return (
     <div className={clsx('relative inline-flex items-center justify-center', className)}>
-      <svg width={size} height={size} className="rotate-[-90deg]">
+      <svg width={safeSize} height={safeSize} className="rotate-[-90deg]">
         {/* Background track */}
         <circle
-          cx={size / 2}
-          cy={size / 2}
+          cx={safeSize / 2}
+          cy={safeSize / 2}
           r={radius}
           stroke="#1d2025"
-          strokeWidth={strokeWidth}
+          strokeWidth={safeStroke}
           fill="transparent"
         />
         {/* Active progress sweep */}
         <circle
-          cx={size / 2}
-          cy={size / 2}
+          cx={safeSize / 2}
+          cy={safeSize / 2}
           r={radius}
           stroke="currentColor"
-          strokeWidth={strokeWidth}
+          strokeWidth={safeStroke}
           strokeDasharray={circumference}
           strokeDashoffset={strokeDashoffset}
           strokeLinecap="round"
