@@ -156,6 +156,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build Web & UI Dependencies
+        run: pnpm turbo run build --filter=@kineticfit/web...
+
       - name: Run Accessibility (Axe-core WCAG 2.2 AA) & Portal Test
         run: pnpm --filter @kineticfit/web test
 

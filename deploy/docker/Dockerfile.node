@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 # =============================================================================
 # KineticFit OS - Hardened Multi-Stage Node.js Microservice Dockerfile
 # Pinned slim base, non-root user (UID 10001), dumb-init PID 1 signal handler,
@@ -10,14 +11,14 @@ WORKDIR /app
 RUN apk add --no-cache dumb-init libc6-compat
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable && corepack prepare pnpm@9.12.3 --activate
+RUN npm install -g pnpm@12.15.0
 
 # --- Stage 2: Build & Prune ---
 FROM base AS builder
 WORKDIR /app
 
 # Copy dependency specifications for Turborepo / pnpm caching
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json tsconfig.base.json ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json tsconfig.json ./
 COPY packages/ ./packages/
 COPY apps/ ./apps/
 COPY db/ ./db/
@@ -61,4 +62,3 @@ HEALTHCHECK --interval=10s --timeout=3s --start-period=15s --retries=3 \
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["node", "dist/server.js"]
-
